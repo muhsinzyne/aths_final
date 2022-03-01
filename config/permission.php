@@ -1,5 +1,7 @@
 <?php
 
+use App\Constants\AppConst;
+
 return [
 
     'models' => [
@@ -36,7 +38,7 @@ return [
          * default value but you may easily change it to any table you like.
          */
 
-        'roles' => 'roles',
+        'roles' => AppConst::DB_PREFIX . 'roles',
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
@@ -44,7 +46,7 @@ return [
          * default value but you may easily change it to any table you like.
          */
 
-        'permissions' => 'permissions',
+        'permissions' => AppConst::DB_PREFIX . 'permissions',
 
         /*
          * When using the "HasPermissions" trait from this package, we need to know which
@@ -52,7 +54,7 @@ return [
          * basic default value but you may easily change it to any table you like.
          */
 
-        'model_has_permissions' => 'model_has_permissions',
+        'model_has_permissions' => AppConst::DB_PREFIX . 'model_has_permissions',
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
@@ -60,7 +62,7 @@ return [
          * basic default value but you may easily change it to any table you like.
          */
 
-        'model_has_roles' => 'model_has_roles',
+        'model_has_roles' => AppConst::DB_PREFIX . 'model_has_roles',
 
         /*
          * When using the "HasRoles" trait from this package, we need to know which
@@ -68,7 +70,7 @@ return [
          * basic default value but you may easily change it to any table you like.
          */
 
-        'role_has_permissions' => 'role_has_permissions',
+        'role_has_permissions' => AppConst::DB_PREFIX . 'role_has_permissions',
     ],
 
     'column_names' => [

@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\AppConst;
 use Illuminate\Support\Str;
 
 return [
@@ -85,7 +86,7 @@ return [
     |
     */
 
-    'table' => 'sessions',
+    'table' => AppConst::DB_PREFIX . 'sessions',
 
     /*
     |--------------------------------------------------------------------------
@@ -128,7 +129,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug(env('APP_NAME', 'laravel'), '_').'_session'
+        Str::slug(env('APP_NAME', 'laravel'), '_') . '_session'
     ),
 
     /*
