@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Models;
 
+use App\Constants\AppConst;
 use App\Core\Traits\SpatieLogsActivity;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +11,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    protected $table = AppConst::DB_PREFIX . 'users';
+
     use HasFactory, Notifiable;
     use SpatieLogsActivity;
     use HasRoles;
@@ -78,7 +80,7 @@ class User extends Authenticatable implements MustVerifyEmail
             return asset($this->info->avatar_url);
         }
 
-        return asset(theme()->getMediaUrlPath().'avatars/blank.png');
+        return asset(theme()->getMediaUrlPath() . 'avatars/blank.png');
     }
 
     /**
