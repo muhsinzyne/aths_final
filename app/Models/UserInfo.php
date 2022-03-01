@@ -1,13 +1,15 @@
 <?php
-
 namespace App\Models;
 
+use App\Constants\AppConst;
 use App\Core\Traits\SpatieLogsActivity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class UserInfo extends Model
 {
+    protected $table = AppConst::DB_PREFIX . 'user_infos';
+
     use SpatieLogsActivity;
 
     /**
@@ -30,7 +32,7 @@ class UserInfo extends Model
         }
 
         // no avatar, return blank avatar
-        return asset(theme()->getMediaUrlPath().'avatars/blank.png');
+        return asset(theme()->getMediaUrlPath() . 'avatars/blank.png');
     }
 
     /**
