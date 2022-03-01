@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -17,7 +16,11 @@ class PasswordResetLinkController extends Controller
      */
     public function create()
     {
-        return view('auth.forgot-password');
+        $page                = $this->page;
+        $page['title']       = trans('app.forgot_password_title');
+        $page['description'] = trans('app_forgot_password_description');
+
+        return view('auth.forgot-password', compact('page'));
     }
 
     /**
@@ -65,7 +68,7 @@ class PasswordResetLinkController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if(!$user){
+        if (!$user) {
             throw ValidationException::withMessages([
                 'email' => ['User with such email doesn\'t exist']
             ]);
