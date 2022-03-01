@@ -1,4 +1,4 @@
-<x-auth-layout>
+<x-auth-layout :page="$page">
 
     <!--begin::Signin Form-->
     <form method="POST" action="{{ theme()->getPageUrl('login') }}" class="form w-100" novalidate="novalidate" id="kt_sign_in_form">

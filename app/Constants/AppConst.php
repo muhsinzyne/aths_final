@@ -11,4 +11,6 @@ class AppConst
     const APP_HOME        = '';
     const APP_PURCHASE    = '';
     const TERMS           = '';
+    const ORGANIZATION    = 'ATHS';
+    const APP             = 'Communicator';
 }

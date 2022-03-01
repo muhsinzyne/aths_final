@@ -1,7 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Base\BaseHttpController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
 class PagesController extends Controller
@@ -13,12 +14,13 @@ class PagesController extends Controller
      */
     public function index()
     {
-        // Get view file location from menu config
+        $page = $this->page;
+
         $view = theme()->getOption('page', 'view');
 
         // Check if the page view file exist
-        if (view()->exists('pages.'.$view)) {
-            return view('pages.'.$view);
+        if (view()->exists('pages.' . $view)) {
+            return view('pages.' . $view);
         }
 
         // Get the default inner page
@@ -46,7 +48,7 @@ class PagesController extends Controller
 
         $files    = File::allFiles(resource_path());
         $filtered = array_filter($files, function ($str) {
-            return strpos($str, ".php") !== false;
+            return strpos($str, '.php') !== false;
         });
 
         foreach ($filtered as $file) {

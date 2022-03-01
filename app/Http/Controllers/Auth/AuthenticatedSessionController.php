@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -21,7 +20,11 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        $page                = $this->page;
+        $page['title']       = trans('app.login_title');
+        $page['description'] = trans('app.login_description');
+
+        return view('auth.login', compact('page'));
     }
 
     /**
@@ -56,6 +59,7 @@ class AuthenticatedSessionController extends Controller
         }
 
         $user = User::where('email', $request->email)->first();
+
         return response($user);
     }
 
@@ -74,11 +78,12 @@ class AuthenticatedSessionController extends Controller
 
         $user = User::where('api_token', $request->api_token)->first();
 
-        if(!$user){
+        if (!$user) {
             throw ValidationException::withMessages([
                 'token' => ['Invalid token']
             ]);
         }
+
         return response($user);
     }
 
