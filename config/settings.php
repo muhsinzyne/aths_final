@@ -70,6 +70,6 @@ return [
     |
     */
     'defaults' => [
-        'demo' => 'demo1',
+        'demo' => AppConst::THEME,
     ]
 ];

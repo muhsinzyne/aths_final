@@ -37,25 +37,23 @@ mix.options({
 });
 
 // Remove existing generated assets from public folder
-del.sync(['public/css/*', 'public/js/*', 'public/media/*', 'public/plugins/*',]);
+del.sync(['public/css/*', 'public/js/*', 'public/media/*', 'public/plugins/*', ]);
 
 // Build 3rd party plugins css/js
 mix.sass(`resources/assets/core/plugins/plugins.scss`, `public/${demo}/plugins/global/plugins.bundle.css`).then(() => {
-    // remove unused preprocessed fonts folder
-    rimraf(path.resolve('public/fonts'), () => {
-    });
-    rimraf(path.resolve('public/images'), () => {
-    });
-}).sourceMaps(!mix.inProduction())
+        // remove unused preprocessed fonts folder
+        rimraf(path.resolve('public/fonts'), () => {});
+        rimraf(path.resolve('public/images'), () => {});
+    }).sourceMaps(!mix.inProduction())
     // .setResourceRoot('./')
-    .options({processCssUrls: false})
+    .options({ processCssUrls: false })
     .scripts(require('./resources/assets/core/plugins/plugins.js'), `public/${demo}/plugins/global/plugins.bundle.js`);
 
 // Build extended plugin styles
 mix.sass(`resources/assets/${demo}/sass/plugins.scss`, `public/${demo}/plugins/global/plugins-custom.bundle.css`);
 
 // Build Metronic css/js
-mix.sass(`resources/assets/${demo}/sass/style.scss`, `public/${demo}/css/style.bundle.css`, {sassOptions: {includePaths: ['node_modules']}})
+mix.sass(`resources/assets/${demo}/sass/style.scss`, `public/${demo}/css/style.bundle.css`, { sassOptions: { includePaths: ['node_modules'] } })
     // .options({processCssUrls: false})
     .scripts(require(`./resources/assets/${demo}/js/scripts.js`), `public/${demo}/js/scripts.bundle.js`);
 
@@ -64,13 +62,13 @@ mix.sass(`resources/assets/${demo}/sass/style.scss`, `public/${demo}/css/style.b
 if (args.indexOf('dark_mode') !== -1) {
     mix.sass(`resources/assets/core/plugins/plugins.dark.scss`, `public/${demo}/plugins/global/plugins.dark.bundle.css`);
     mix.sass(`resources/assets/${demo}/sass/plugins.dark.scss`, `public/${demo}/plugins/global/plugins-custom.dark.bundle.css`);
-    mix.sass(`resources/assets/${demo}/sass/style.dark.scss`, `public/${demo}/css/style.dark.bundle.css`, {sassOptions: {includePaths: ['node_modules']}});
+    mix.sass(`resources/assets/${demo}/sass/style.dark.scss`, `public/${demo}/css/style.dark.bundle.css`, { sassOptions: { includePaths: ['node_modules'] } });
 }
 
 
 // Build custom 3rd party plugins
 (glob.sync(`resources/assets/core/plugins/custom/**/*.js`) || []).forEach(file => {
-    mix.js(file, `public/${demo}/${file.replace(`resources/assets/core/`, '').replace('.js', '.bundle.js')}`);
+            mix.js(file, `public/${demo}/${file.replace(`resources/assets/core/`, '').replace('.js', '.bundle.js')}`);
 });
 (glob.sync(`resources/assets/core/plugins/custom/**/*.scss`) || []).forEach(file => {
     mix.sass(file, `public/${demo}/${file.replace(`resources/assets/core/`, '').replace('.scss', '.bundle.css')}`);
@@ -209,7 +207,7 @@ function getDemos(pathDemos) {
         }
     });
     if (demos.length === 0) {
-        demos = ['demo1'];
+        demos = ['aths'];
     }
     return demos;
 }

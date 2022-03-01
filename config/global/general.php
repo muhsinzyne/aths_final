@@ -28,7 +28,7 @@ return [
             ],
         ],
         'demos'       => [
-            'demo1' => [
+            AppConst::THEME => [
                 'title'       => 'Demo 1',
                 'description' => 'Default Dashboard',
                 'published'   => true,

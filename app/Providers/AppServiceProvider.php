@@ -1,6 +1,7 @@
 <?php
 namespace App\Providers;
 
+use App\Constants\AppConst;
 use App\Core\Adapters\Theme;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -32,8 +33,8 @@ class AppServiceProvider extends ServiceProvider
         View::share('theme', $theme);
 
         // Set demo globally
-        //$theme->setDemo(request()->input('demo', 'demo1'));
-        $theme->setDemo('demo1');
+        //$theme->setDemo(request()->input('demo', AppConst::THEME));
+        $theme->setDemo(AppConst::THEME);
 
         $theme->initConfig();
 
