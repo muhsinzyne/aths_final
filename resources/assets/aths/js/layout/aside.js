@@ -1,28 +1,28 @@
 "use strict";
 
 // Class definition
-var KTLayoutAside = function () {
+var KTLayoutAside = function() {
     // Private variables
     var toggle;
     var aside;
 
     // Private functions
-    var handleToggle = function () {
-       var toggleObj = KTToggle.getInstance(toggle);
+    var handleToggle = function() {
+        var toggleObj = KTToggle.getInstance(toggle);
 
-       // Add a class to prevent aside hover effect after toggle click
-       toggleObj.on('kt.toggle.change', function() {
-           aside.classList.add('animating');
+        // Add a class to prevent aside hover effect after toggle click
+        toggleObj.on('kt.toggle.change', function() {
+            aside.classList.add('animating');
 
-           setTimeout(function() {
+            setTimeout(function() {
                 aside.classList.remove('animating');
-           }, 300);
-       })
+            }, 300);
+        })
     }
 
     // Public methods
     return {
-        init: function () {
+        init: function() {
             // Elements
             aside = document.querySelector('#kt_aside');
             toggle = document.querySelector('#kt_aside_toggle');
@@ -37,6 +37,6 @@ var KTLayoutAside = function () {
 }();
 
 // On document ready
-KTUtil.onDOMContentLoaded(function () {
+KTUtil.onDOMContentLoaded(function() {
     KTLayoutAside.init();
 });
