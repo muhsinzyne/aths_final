@@ -1,3 +1,5 @@
+
+
 @php
     $breadcrumb = bootstrap()->getBreadcrumb();
 
@@ -13,11 +15,13 @@
     }
 @endphp
 
+
 <!--begin::Page title-->
 <div {{ theme()->printHtmlAttributes("page-title") }} class="d-flex {{ $baseClass }}">
     <!--begin::Title-->
     <h1 class="d-flex align-items-center text-dark fw-bolder my-1 fs-3">
-    {{ theme()->getOption('page', 'title') }}
+
+    {{ $page['title'] ?? theme()->getOption('page', 'title')  }}
 
     @if (theme()->hasOption('page', 'description') && theme()->getOption('layout', 'page-title/description') === true)
         <!--begin::Separator-->

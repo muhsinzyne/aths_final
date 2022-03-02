@@ -25,7 +25,7 @@
                     <!--begin::Content-->
                     <div class="content d-flex flex-column flex-column-fluid {{ theme()->printHtmlClasses('content', false) }}" id="kt_content">
                     @if (theme()->getOption('layout', 'toolbar/display') === true)
-                        {{ theme()->getView('layout/toolbars/_' . theme()->getOption('layout', 'toolbar/layout')) }}
+                        {{ theme()->getView('layout/toolbars/_' . theme()->getOption('layout', 'toolbar/layout'), compact('page')) }}
                     @endif
 
                         <!--begin::Post-->

@@ -8,6 +8,7 @@ class DashBoardController extends Controller
 {
     public function index()
     {
+        $activeUser    = $this->canAccess('dashboard.index');
         $view          = theme()->getOption('page', 'view');
         $page          = $this->page;
         $page['title'] = trans('Dashbaord');
