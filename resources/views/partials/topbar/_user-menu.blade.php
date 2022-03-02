@@ -13,7 +13,7 @@
             <div class="d-flex flex-column">
                 <div class="fw-bolder d-flex align-items-center fs-5">
                     {{ auth()->user()->name }}
-                    <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span>
+                    {{-- <span class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Pro</span> --}}
                 </div>
                 <a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ auth()->user()->email }}</a>
             </div>
@@ -35,18 +35,18 @@
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5">
+    {{-- <div class="menu-item px-5">
         <a href="#" class="menu-link px-5" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('Coming soon') }}">
             <span class="menu-text">{{ __('My Projects') }}</span>
             <span class="menu-badge">
                 <span class="badge badge-light-danger badge-circle fw-bolder fs-7">3</span>
             </span>
         </a>
-    </div>
+    </div> --}}
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
+    {{-- <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
         <a href="#" class="menu-link px-5">
             <span class="menu-title">{{ __('My Subscription') }}</span>
             <span class="menu-arrow"></span>
@@ -106,19 +106,19 @@
             <!--end::Menu item-->
         </div>
         <!--end::Menu sub-->
-    </div>
+    </div> --}}
     <!--end::Menu item-->
 
     <!--begin::Menu item-->
-    <div class="menu-item px-5" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('Coming soon') }}">
+    {{-- <div class="menu-item px-5" data-bs-toggle="tooltip" data-bs-placement="left" title="{{ __('Coming soon') }}">
         <a href="#" class="menu-link px-5">
             {{ __('My Statements') }}
         </a>
-    </div>
+    </div> --}}
     <!--end::Menu item-->
 
     <!--begin::Menu separator-->
-    <div class="separator my-2"></div>
+    {{-- <div class="separator my-2"></div> --}}
     <!--end::Menu separator-->
 
     <!--begin::Menu item-->

@@ -14,28 +14,28 @@
     <!--end::Search-->
 
     <!--begin::Activities-->
-    <div class="d-flex align-items-center {{ $itemClass }}">
+    {{-- <div class="d-flex align-items-center {{ $itemClass }}">
         <!--begin::Drawer toggle-->
         <div class="{{ $btnClass }}" id="kt_activities_toggle">
             {!! theme()->getSvgIcon("icons/duotune/general/gen032.svg", $btnIconClass) !!}
         </div>
         <!--end::Drawer toggle-->
-    </div>
+    </div> --}}
     <!--end::Activities-->
 
     <!--begin::Notifications-->
-    <div class="d-flex align-items-center {{ $itemClass }}">
+    {{-- <div class="d-flex align-items-center {{ $itemClass }}">
         <!--begin::Menu- wrapper-->
         <div class="{{ $btnClass }}" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
             {!! theme()->getSvgIcon("icons/duotune/general/gen022.svg", $btnIconClass) !!}
         </div>
     {{ theme()->getView('partials/topbar/_notifications-menu') }}
     <!--end::Menu wrapper-->
-    </div>
+    </div> --}}
     <!--end::Notifications-->
 
     <!--begin::Chat-->
-    <div class="d-flex align-items-center {{ $itemClass }}">
+    {{-- <div class="d-flex align-items-center {{ $itemClass }}">
         <!--begin::Menu wrapper-->
         <div class="{{ $btnClass }} position-relative" id="kt_drawer_chat_toggle">
             {!! theme()->getSvgIcon("icons/duotune/communication/com012.svg", $btnIconClass) !!}
@@ -44,18 +44,18 @@
             </span>
         </div>
         <!--end::Menu wrapper-->
-    </div>
+    </div> --}}
     <!--end::Chat-->
 
     <!--begin::Quick links-->
-    <div class="d-flex align-items-center {{ $itemClass }}">
+    {{-- <div class="d-flex align-items-center {{ $itemClass }}">
         <!--begin::Menu wrapper-->
         <div class="{{ $btnClass }}" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
             {!! theme()->getSvgIcon("icons/duotune/general/gen025.svg", $btnIconClass) !!}
         </div>
     {{ theme()->getView('partials/topbar/_quick-links-menu') }}
     <!--end::Menu wrapper-->
-    </div>
+    </div> --}}
     <!--end::Quick links-->
 
     <!--begin::Theme mode-->

@@ -3,7 +3,7 @@ namespace App\Constants;
 
 class AppConst
 {
-    const THEME           = 'aths';
+    const THEME           = 'demo1';
     const DB_PREFIX       = 'aths_';
     const APP_NAME        = 'ATHS Communicator';
     const APP_DESCRIPTION = 'ATHS Communicator';

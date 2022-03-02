@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 $menu = theme()->getMenu();
+
 array_walk($menu, function ($val) {
     if (isset($val['path'])) {
         $route = Route::get($val['path'], [PagesController::class, 'index']);
@@ -34,12 +35,6 @@ array_walk($menu, function ($val) {
             $route->middleware('auth');
         }
     }
-});
-
-// Documentations pages
-Route::prefix('documentation')->group(function () {
-    Route::get('getting-started/references', [ReferencesController::class, 'index']);
-    Route::get('getting-started/changelog', [PagesController::class, 'index']);
 });
 
 Route::middleware('auth')->group(function () {
@@ -66,4 +61,4 @@ Route::resource('users', UsersController::class);
  */
 Route::get('/auth/redirect/{provider}', [SocialiteLoginController::class, 'redirect']);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -1,8 +1,8 @@
 @php
-    $logoFileName = 'logo-1-dark.svg';
+    $logoFileName = 'logo_badge.png';
 
     if (theme()->getOption('layout', 'aside/theme') === 'light') {
-        $logoFileName = 'logo-1.svg';
+        $logoFileName = 'logo_badge.png';
     }
 @endphp
 
@@ -23,7 +23,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         {{--begin::Logo--}}
         <a href="{{ theme()->getPageUrl('') }}">
-            <img alt="Logo" src="{{ asset(theme()->getMediaUrlPath() . 'logos/' . $logoFileName) }}" class="h-25px logo"/>
+            <img alt="Logo" src="{{ URL::asset('storage/images/'. $logoFileName) }}" class="h-55px logo"/>
         </a>
         {{--end::Logo--}}
 
@@ -50,14 +50,14 @@
     {{--end::Aside menu--}}
 
     {{--begin::Footer--}}
-    <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
+    {{-- <div class="aside-footer flex-column-auto pt-5 pb-7 px-5" id="kt_aside_footer">
         <a href="{{ theme()->getPageUrl('documentation/getting-started/overview') }}" class="btn btn-custom btn-primary w-100" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-delay-show="8000" title="Check out the complete documentation with over 100 components">
         <span class="btn-label">
             {{ __('Documentation') }}
         </span>
             {!! theme()->getSvgIcon("icons/duotune/general/gen005.svg", "btn-icon svg-icon-2") !!}
         </a>
-    </div>
+    </div> --}}
     {{--end::Footer--}}
 </div>
 {{--end::Aside--}}

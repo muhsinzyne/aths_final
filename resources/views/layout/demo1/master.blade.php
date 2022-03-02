@@ -48,7 +48,7 @@
         <!--end::Drawers-->
 
         <!--begin::Engage-->
-        {{ theme()->getView('partials/engage/_main') }}
+        {{-- {{ theme()->getView('partials/engage/_main') }} --}}
         <!--end::Engage-->
 
         @if(theme()->getOption('layout', 'scrolltop/display') === true)
