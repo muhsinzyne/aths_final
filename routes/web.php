@@ -3,6 +3,7 @@
 use App\Http\Controllers\Account\SettingsController;
 use App\Http\Controllers\Auth\SocialiteLoginController;
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\DemoController;
 use App\Http\Controllers\Documentation\ReferencesController;
 use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
@@ -71,6 +72,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('settings')->group(function () {
         Route::resource('permission', PermissionController::class)->names('settings.permission');
     });
+
+    Route::get('demo', [DemoController::class, 'index'])->name('demo.index');
 });
 
 Route::resource('users', UsersController::class);

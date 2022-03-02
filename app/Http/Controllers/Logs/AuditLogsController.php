@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Logs;
 
 use App\DataTables\Logs\AuditLogsDataTable;

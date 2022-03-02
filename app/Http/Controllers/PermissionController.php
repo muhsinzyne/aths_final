@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Constants\AppViews;
+use App\DataTables\Logs\AuditLogsDataTable;
+use App\DataTables\PermissionsDataTable;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -11,18 +13,20 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(PermissionsDataTable $dataTable)
     {
         $activeUser    = $this->canAccess('dashboard.index');
         $view          = theme()->getOption('page', 'view');
         $page          = $this->page;
         $page['title'] = trans('Permissions List');
 
-        if (view()->exists(AppViews::PERMISSIONS_INDEX)) {
-            return view(AppViews::PERMISSIONS_INDEX, compact('page'));
-        }
+        // if (view()->exists(AppViews::PERMISSIONS_INDEX)) {
+        //     return view(AppViews::PERMISSIONS_INDEX, compact('page'));
+        // }
 
-        return redirect('/');
+        // return redirect('/');
+
+        return $dataTable->render(AppViews::PERMISSIONS_INDEX, compact('page'));
     }
 
     /**

@@ -141,6 +141,22 @@ return [
         ],
     ],
 
+    'settings' => [
+        'permission'  => [
+            'title'  => 'Audit Log',
+            'assets' => [
+                'custom' => [
+                    'css' => [
+                        'plugins/custom/datatables/datatables.bundle.css',
+                    ],
+                    'js'  => [
+                        'plugins/custom/datatables/datatables.bundle.js',
+                    ],
+                ],
+            ],
+        ],
+    ],
+
     // Documentation pages
     'documentation' => [
         // '*' => array(
