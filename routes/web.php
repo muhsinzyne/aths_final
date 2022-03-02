@@ -26,19 +26,33 @@ use Illuminate\Support\Facades\Route;
 
 $menu = theme()->getMenu();
 
-array_walk($menu, function ($val) {
-    if (isset($val['path'])) {
-        $route = Route::get($val['path'], [PagesController::class, 'index']);
+// array_walk($menu, function ($val) {
+//     if (isset($val['path'])) {
+//         if ($val['path'] == '') {
+//             $route = Route::get($val['path'], [PagesController::class, 'index']);
+//         } else {
+//         }
+//         $route = Route::get($val['path'], [PagesController::class, 'index']);
 
-        // Exclude documentation from auth middleware
-        if (!Str::contains($val['path'], 'documentation')) {
-            $route->middleware('auth');
-        }
-    }
-});
+//         // Exclude documentation from auth middleware
+//         if (!Str::contains($val['path'], 'documentation')) {
+//             $route->middleware('auth');
+//         }
+//     }
+// });
+
+// Route::get(
+//     '/',
+//     function () {
+//         return redirect('/index');
+//     }
+// )->name('site.home');
+
+Route::get('/', [PagesController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    // Account pages
+    Route::get('/', [PagesController::class, 'index'])->name('home');
+
     Route::prefix('account')->group(function () {
         Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
         Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
