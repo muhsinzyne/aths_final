@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Account\SettingsController;
 use App\Http\Controllers\Auth\SocialiteLoginController;
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\Documentation\ReferencesController;
 use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
@@ -48,10 +49,10 @@ $menu = theme()->getMenu();
 //     }
 // )->name('site.home');
 
-Route::get('/', [PagesController::class, 'index'])->name('home');
+// Route::get('/', [PagesController::class, 'index'])->name('home');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/', [PagesController::class, 'index'])->name('home');
+    Route::get('/', [DashBoardController::class, 'index'])->name('home');
 
     Route::prefix('account')->group(function () {
         Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
