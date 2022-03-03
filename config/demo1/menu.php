@@ -1,11 +1,13 @@
 <?php
 
+use App\Constants\AppUrls;
+
 return [
 
     'main'=> [
         [
             'title' => 'DashBoard',
-            'path'  => '',
+            'path'  => 'index',
             'icon'  => theme()->getSvgIcon('demo1/media/icons/duotune/art/art002.svg', 'svg-icon-2'),
         ],
 
@@ -28,29 +30,30 @@ return [
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => [
                     [
-                        'title'  => 'Overview',
-                        'path'   => 'account/overview',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ],
-                    [
-                        'title'  => 'Settings',
-                        'path'   => 'account/settings',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ],
-                    [
-                        'title'      => 'Security',
-                        'path'       => '#',
+                        'title'      => 'Permissions',
+                        'path'       => AppUrls::PERMISSON_INDEX,
                         'bullet'     => '<span class="bullet bullet-dot"></span>',
-                        'attributes' => [
-                            'link' => [
-                                'title'             => 'Coming soon',
-                                'data-bs-toggle'    => 'tooltip',
-                                'data-bs-trigger'   => 'hover',
-                                'data-bs-dismiss'   => 'click',
-                                'data-bs-placement' => 'right',
+                        'sub'        => [
+                            'class' => 'menu-sub-accordion menu-active-bg',
+                            'items' => [
+                                [
+                                    'title'  => 'Permission List',
+                                    'path'   => AppUrls::PERMISSON_INDEX,
+                                    'bullet' => '<span class="bullet bullet-dot"></span>',
+
+                                ],
+
+                                [
+                                    'title'  => 'Create Permission',
+                                    'path'   => AppUrls::PERMISSON_CREATE,
+                                    'bullet' => '<span class="bullet bullet-dot"></span>',
+
+                                ],
+
                             ],
                         ],
                     ],
+
                 ],
             ],
         ],

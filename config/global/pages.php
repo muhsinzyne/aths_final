@@ -8,7 +8,7 @@ return [
         'layout'      => [
             'page-title' => [
                 'description' => true,
-                'breadcrumb'  => false,
+                'breadcrumb'  => true,
             ],
         ],
         'assets'      => [

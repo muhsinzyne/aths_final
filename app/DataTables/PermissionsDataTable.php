@@ -24,9 +24,9 @@ class PermissionsDataTable extends DataTable
             ->editColumn('id', function (Permission $model) {
                 return $model->id;
             })
-                        ->editColumn('created_at', function (Permission $model) {
-                            //return $model->created_at->format('d M, Y H:i:s');
-                        });
+            ->editColumn('created_at', function (Permission $model) {
+                //return $model->created_at->format('d M, Y H:i:s');
+            });
     }
 
     /**
@@ -59,31 +59,10 @@ class PermissionsDataTable extends DataTable
                 'scrollX'      => true,
                 'drawCallback' => 'function() { KTMenu.createInstances(); }',
             ])
-            // ->buttons(
-            //     //Button::make('create'),
-            //     //Button::make('export'),
-            //     //Button::make('print'),
-            //     //Button::make('reset'),
-            //     //Button::make('reload')
-            // )
             ->parameters([
                 'buttons' => ['csv', 'pdf'],
             ])
             ->addTableClass('align-middle table-row-dashed fs-6 gy-5');
-
-        // return $this->builder()
-        //             ->setTableId('permissions-table')
-        //             ->columns($this->getColumns())
-        //             ->minifiedAjax()
-        //             ->dom('Bfrtip')
-        //             ->orderBy(1)
-        //             ->buttons(
-        //                 Button::make('create'),
-        //                 //Button::make('export'),
-        //                 //Button::make('print'),
-        //                //Button::make('reset'),
-        //                 //Button::make('reload')
-        //             );
     }
 
     /**
@@ -93,13 +72,9 @@ class PermissionsDataTable extends DataTable
      */
     protected function getColumns()
     {
-        return [
+        $columns = [
             Column::make('id')->title('Id'),
-            Column::make('name')->title(__('Name')),
-            //Column::make('description'),
-            //Column::make('subject_type'),
-            //Column::make('subject_id')->title(__('Subject')),
-            //Column::make('causer_id')->title(__('Causer')),
+            Column::make('name')->title('Name'),
             Column::make('created_at'),
             //Column::computed('action')
             //->exportable(false)
@@ -108,17 +83,8 @@ class PermissionsDataTable extends DataTable
             // ->responsivePriority(-1),
             //Column::make('properties')->addClass('none'),
         ];
-        // return [
-        //     Column::computed('action')
-        //           ->exportable(false)
-        //           ->printable(false)
-        //           ->width(60)
-        //           ->addClass('text-center'),
-        //     Column::make('id'),
-        //     Column::make('add your columns'),
-        //     Column::make('created_at'),
-        //     Column::make('updated_at'),
-        // ];
+
+        return $columns;
     }
 
     /**

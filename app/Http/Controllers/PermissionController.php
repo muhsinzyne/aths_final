@@ -36,7 +36,14 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        $activeUser    = $this->canAccess('dashboard.index');
+        $view          = theme()->getOption('page', 'view');
+        $page          = $this->page;
+        //$page['title'] = trans('Create Permission');
+
+        if (view()->exists(AppViews::PERMISSSIONS_CREATE)) {
+            return view(AppViews::PERMISSSIONS_CREATE, compact('page'));
+        }
     }
 
     /**
