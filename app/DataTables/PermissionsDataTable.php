@@ -66,6 +66,9 @@ class PermissionsDataTable extends DataTable
             //     //Button::make('reset'),
             //     //Button::make('reload')
             // )
+            ->parameters([
+                'buttons' => ['csv', 'pdf'],
+            ])
             ->addTableClass('align-middle table-row-dashed fs-6 gy-5');
 
         // return $this->builder()
