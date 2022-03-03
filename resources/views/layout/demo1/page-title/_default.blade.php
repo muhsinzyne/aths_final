@@ -2,6 +2,9 @@
 
 @php
     $breadcrumb = bootstrap()->getBreadcrumb();
+    if(empty($breadcrumb)) {
+        $breadcrumb = $page['breadcrumb'];
+    }
 
     if (theme()->getOption('layout', 'page-title/direction') == 'column') {
         $baseClass = 'flex-column align-items-start me-3';
@@ -48,7 +51,7 @@
         <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
         @foreach ($breadcrumb as $item)
             <!--begin::Item-->
-                @if ( $item['active'] === true )
+                @if ((isset($item['active'])) && $item['active'] === true )
                     <li class="breadcrumb-item text-dark">
                         {{ $item['title'] }}
                     </li>

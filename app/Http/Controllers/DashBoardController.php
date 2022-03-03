@@ -12,6 +12,7 @@ class DashBoardController extends Controller
         $view          = theme()->getOption('page', 'view');
         $page          = $this->page;
         $page['title'] = trans('Dashbaord');
+
         if (view()->exists(AppViews::DASHBOARD)) {
             return view(AppViews::DASHBOARD, compact('page'));
         }

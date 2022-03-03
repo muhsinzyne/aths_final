@@ -17,7 +17,9 @@
                         <!--end::Card title-->
                     </div>
                     <div id="kt_account_profile_details" class="collapse show">
-                        {{ Form::open(['url' => 'settings/permission','method' => 'post','id' => 'kt_account_permission_form','class' => 'form']) }}
+
+                        {{Form::model($permission,array('route' => array('settings.permission.update', $permission->id), 'method' => 'PUT', 'id' => 'kt_account_permission_form','class' => 'form')) }}
+                            @method('PUT')
                             @include('settings.permissions._form')
                         {{ Form::close() }}
                     </div>

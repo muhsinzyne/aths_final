@@ -12,22 +12,28 @@ class BaseHttpController extends BaseController
     public function __get(string $name)
     {
         if ($name == 'page') {
-            $page                     = [];
-            $page['logo']             = asset('dist/images/logo.svg');
-            $page['organization']     =  AppConst::ORGANIZATION;
-            $page['app']              = AppConst::APP;
-            $page['app_name']         = AppConst::APP_NAME;
-            $page['title']            = '';
-            $page['description']      = '';
-            $page['brudcrums']        = [];
-            $page['uri']              = request()->getUri();
-            $page['layout']           = 'side-menu';
-            $page['activeUser']       = null;
+            $page                      = [];
+            $page['logo']              = asset('dist/images/logo.svg');
+            $page['organization']      =  AppConst::ORGANIZATION;
+            $page['app']               = AppConst::APP;
+            $page['app_name']          = AppConst::APP_NAME;
+            $page['title']             = '';
+            $page['description']       = '';
+            $page['breadcrumb']        = [];
+            $page['uri']               = request()->getUri();
+            $page['layout']            = 'side-menu';
+            $page['activeUser']        = null;
             if (Auth::check()) {
                 $page['activeUser'] = Auth::user();
             }
             $page['js']               = [];
             $page['css']              = [];
+
+            $page['breadcrumb'][] = [
+                'title'  => 'Home',
+                'path'   => '/',
+                'active' => false,
+            ];
 
             return $page;
         }

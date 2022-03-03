@@ -143,7 +143,7 @@ return [
 
     'settings' => [
         'permission'  => [
-            'title'  => 'Audit Log',
+            'title'  => 'Permission List',
             'assets' => [
                 'custom' => [
                     'css' => [

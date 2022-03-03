@@ -20,12 +20,16 @@ class PermissionsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->rawColumns(['name', 'properties', 'action'])
-            ->editColumn('id', function (Permission $model) {
-                return $model->id;
+            ->addIndexColumn()
+            ->addColumn('assigned_roles', function (Permission $model) {
+                return view('settings.permissions._assigned_roles', compact('model'));
             })
+            ->rawColumns(['actions', 'assigned_roles'])
             ->editColumn('created_at', function (Permission $model) {
-                //return $model->created_at->format('d M, Y H:i:s');
+                return $model->created_at->format('d M, Y H:i:s');
+            })
+            ->addColumn('actions', function ($model) {
+                return view('settings.permissions._actions', compact('model'));
             });
     }
 
@@ -52,7 +56,7 @@ class PermissionsDataTable extends DataTable
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->stateSave(true)
-            ->orderBy(6)
+            //->orderBy('id', 'desc')
             ->responsive()
             ->autoWidth(false)
             ->parameters([
@@ -73,15 +77,19 @@ class PermissionsDataTable extends DataTable
     protected function getColumns()
     {
         $columns = [
-            Column::make('id')->title('Id'),
+            Column::make('DT_RowIndex')
+                ->title('#')
+                ->orderable(false)
+                ->searchable(false),
             Column::make('name')->title('Name'),
+            Column::make('guard_name')->title('guard_name'),
+            Column::make('assigned_roles')->title('Assigned Role')
+                ->orderable(false)
+                ->searchable(false),
             Column::make('created_at'),
-            //Column::computed('action')
-            //->exportable(false)
-            //->printable(false)
-            //->addClass('text-center')
-            // ->responsivePriority(-1),
-            //Column::make('properties')->addClass('none'),
+            Column::make('actions')->title('Actions')
+                ->orderable(false)
+                ->searchable(false)
         ];
 
         return $columns;
