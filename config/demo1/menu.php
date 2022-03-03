@@ -54,6 +54,30 @@ return [
                         ],
                     ],
 
+                    [
+                        'title'      => 'Roles',
+                        'path'       => AppUrls::ROLE_INDEX,
+                        'bullet'     => '<span class="bullet bullet-dot"></span>',
+                        'sub'        => [
+                            'class' => 'menu-sub-accordion menu-active-bg',
+                            'items' => [
+                                [
+                                    'title'  => 'Roles List',
+                                    'path'   => AppUrls::ROLE_INDEX,
+                                    'bullet' => '<span class="bullet bullet-dot"></span>',
+
+                                ],
+
+                                [
+                                    'title'  => 'Create Role',
+                                    'path'   => AppUrls::ROLE_CREATE,
+                                    'bullet' => '<span class="bullet bullet-dot"></span>',
+
+                                ],
+
+                            ],
+                        ],
+                    ],
                 ],
             ],
         ],

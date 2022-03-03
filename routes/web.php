@@ -9,6 +9,7 @@ use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,6 +72,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('settings')->group(function () {
         Route::resource('permission', PermissionController::class)->names('settings.permission');
+        Route::resource('roles', RoleController::class)->names('settings.roles');
     });
 
     Route::get('demo', [DemoController::class, 'index'])->name('demo.index');

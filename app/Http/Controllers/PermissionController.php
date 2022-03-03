@@ -19,11 +19,11 @@ class PermissionController extends Controller
      */
     public function index(PermissionsDataTable $dataTable)
     {
-        $activeUser    = $this->canAccess('dashboard.index');
-        $view          = theme()->getOption('page', 'view');
-        $page          = $this->page;
-        $page['title'] = trans('Permissions List');
-        $info          = auth()->user()->info;
+        $activeUser              = $this->canAccess('dashboard.index');
+        $view                    = theme()->getOption('page', 'view');
+        $page                    = $this->page;
+        $page['title']           = trans('Permission List');
+        $info                    = auth()->user()->info;
 
         // if (view()->exists(AppViews::PERMISSIONS_INDEX)) {
         //     return view(AppViews::PERMISSIONS_INDEX, compact('page'));

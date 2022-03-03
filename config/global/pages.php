@@ -155,6 +155,19 @@ return [
                 ],
             ],
         ],
+        'roles'  => [
+            'title'  => 'Role List',
+            'assets' => [
+                'custom' => [
+                    'css' => [
+                        'plugins/custom/datatables/datatables.bundle.css',
+                    ],
+                    'js'  => [
+                        'plugins/custom/datatables/datatables.bundle.js',
+                    ],
+                ],
+            ],
+        ],
     ],
 
     // Documentation pages
