@@ -1,7 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Constants\AppViews;
+use App\DataTables\UsersDataTable;
+use App\Models\AuthUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -12,11 +14,15 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(UsersDataTable $dataTable)
     {
-        $config = theme()->getOption('page');
+        $activeUser              = $this->canAccess('dashboard.index');
+        $view                    = theme()->getOption('page', 'view');
+        $page                    = $this->page;
+        $page['title']           = trans('Permission List');
+        $info                    = auth()->user()->info;
 
-        return User::all();
+        return $dataTable->render(AppViews::USERS_INDEX, compact('page', 'info'));
     }
 
     /**
@@ -26,7 +32,6 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -48,11 +53,17 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AuthUser $user)
     {
-        $config = theme()->getOption('page');
-
-        return User::find($id);
+        $activeUser           = $this->canAccess('dashboard.index');
+        $view                 = theme()->getOption('page', 'view');
+        $page                 = $this->page;
+        $info                 = auth()->user()->info;
+        $page['title']        = trans('View User Details');
+        $page['breadcrumb'][] = ['title' => 'View User Details', 'path' => ''];
+        if (view()->exists(AppViews::USER_VIEW)) {
+            return view(AppViews::USER_VIEW, compact('page', 'info', 'user'));
+        }
     }
 
     /**
@@ -62,11 +73,16 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(AuthUser $user)
     {
-        $config = theme()->getOption('page', 'edit');
+        $activeUser           = $this->canAccess('dashboard.index');
+        $view                 = theme()->getOption('page', 'view');
+        $page                 = $this->page;
+        $info                 = auth()->user()->info;
 
-        return User::find($id);
+        if (view()->exists(AppViews::USERS_EDIT)) {
+            return view(AppViews::USERS_EDIT, compact('page', 'info', 'user'));
+        }
     }
 
     /**

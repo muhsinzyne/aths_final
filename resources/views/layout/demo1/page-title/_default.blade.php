@@ -3,7 +3,7 @@
 @php
     $breadcrumb = bootstrap()->getBreadcrumb();
     if(empty($breadcrumb)) {
-        $breadcrumb = $page['breadcrumb'];
+        $breadcrumb = $page['breadcrumb'] ?? [];
     }
 
     if (theme()->getOption('layout', 'page-title/direction') == 'column') {
@@ -48,34 +48,39 @@
     @endif
 
     <!--begin::Breadcrumb-->
+
+        @if (isset($breadcrumb))
         <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-7 my-1">
-        @foreach ($breadcrumb as $item)
-            <!--begin::Item-->
-                @if ((isset($item['active'])) && $item['active'] === true )
-                    <li class="breadcrumb-item text-dark">
-                        {{ $item['title'] }}
-                    </li>
-                @else
-                    <li class="breadcrumb-item text-muted">
-                        @if ( ! empty($item['path']) )
-                            <a href="{{ theme()->getPageUrl($item['path']) }}" class="text-muted text-hover-primary">
-                                {{ $item['title'] }}
-                            </a>
-                        @else
-                            {{ $item['title'] }}
-                        @endif
-                    </li>
-                @endif
-            <!--end::Item-->
-                @if (next($breadcrumb))
+            @foreach ($breadcrumb as $item)
                 <!--begin::Item-->
-                    <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-200 w-5px h-2px"></span>
-                    </li>
-                    <!--end::Item-->
-                @endif
-            @endforeach
-        </ul>
+                    @if ((isset($item['active'])) && $item['active'] === true )
+                        <li class="breadcrumb-item text-dark">
+                            {{ $item['title'] }}
+                        </li>
+                    @else
+                        <li class="breadcrumb-item text-muted">
+                            @if ( ! empty($item['path']) )
+                                <a href="{{ theme()->getPageUrl($item['path']) }}" class="text-muted text-hover-primary">
+                                    {{ $item['title'] }}
+                                </a>
+                            @else
+                                {{ $item['title'] }}
+                            @endif
+                        </li>
+                    @endif
+                <!--end::Item-->
+                    @if (next($breadcrumb))
+                    <!--begin::Item-->
+                        <li class="breadcrumb-item">
+                            <span class="bullet bg-gray-200 w-5px h-2px"></span>
+                        </li>
+                        <!--end::Item-->
+                    @endif
+                @endforeach
+            </ul>
+        @endif
+
+
         <!--end::Breadcrumb-->
     @endif
 </div>

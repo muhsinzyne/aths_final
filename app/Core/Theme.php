@@ -770,6 +770,14 @@ class Theme
         return '';
     }
 
+    public static function readableString($string)
+    {
+        $string = str_replace('_', ' ', $string);
+        $string = ucwords($string);
+
+        return $string;
+    }
+
     public static function getAssetsUrlPath()
     {
         return self::getBaseUrlPath() . 'assets/';

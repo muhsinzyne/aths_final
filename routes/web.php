@@ -54,6 +54,10 @@ $menu = theme()->getMenu();
 
 // Route::get('/', [PagesController::class, 'index'])->name('home');
 
+Route::fallback(function () {
+    return view('errors.404');
+});
+
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashBoardController::class, 'index'])->name('home');
 
@@ -73,12 +77,13 @@ Route::middleware('auth')->group(function () {
     Route::prefix('settings')->group(function () {
         Route::resource('permission', PermissionController::class)->names('settings.permission');
         Route::resource('roles', RoleController::class)->names('settings.roles');
+        Route::resource('users', UsersController::class)->names('settings.users');
     });
 
     Route::get('demo', [DemoController::class, 'index'])->name('demo.index');
 });
 
-Route::resource('users', UsersController::class);
+// Route::resource('users', UsersController::class);
 
 /**
  * Socialite login using Google service

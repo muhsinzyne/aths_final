@@ -54,7 +54,7 @@
                         </div>
 
                         <div class="card-footer flex-wrap pt-0">
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">View Role</a>
+                            <a href="" class="btn modal-new">View Role</a>
                             <button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Edit Role</button>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                         <!--begin::Card body-->
                         <div class="card-body d-flex flex-center">
                             <!--begin::Button-->
-                            <button type="button" class="btn btn-clear d-flex flex-column flex-center" data-bs-toggle="modal" data-bs-target="#kt_modal_add_role">
+                            <button type="button" class="btn btn-clear d-flex flex-column flex-center modal-new" data-href="http://athsnew.local/settings/roles">
                                 <!--begin::Illustration-->
                                 <img src="{{asset(theme()->getIllustrationUrl('4.png'))}}" alt="" class="mw-100 mh-150px mb-7" />
                                 <!--end::Illustration-->

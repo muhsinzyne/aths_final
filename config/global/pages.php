@@ -142,6 +142,19 @@ return [
     ],
 
     'settings' => [
+        'users'  => [
+            'title'  => 'Users List',
+            'assets' => [
+                'custom' => [
+                    'css' => [
+                        'plugins/custom/datatables/datatables.bundle.css',
+                    ],
+                    'js'  => [
+                        'plugins/custom/datatables/datatables.bundle.js',
+                    ],
+                ],
+            ],
+        ],
         'permission'  => [
             'title'  => 'Permission List',
             'assets' => [

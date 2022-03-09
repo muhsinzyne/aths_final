@@ -30,6 +30,30 @@ return [
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => [
                     [
+                        'title'      => 'Users Management',
+                        'path'       => AppUrls::USERS_INDEX,
+                        'bullet'     => '<span class="bullet bullet-dot"></span>',
+                        'sub'        => [
+                            'class' => 'menu-sub-accordion menu-active-bg',
+                            'items' => [
+                                [
+                                    'title'  => 'Users List',
+                                    'path'   => AppUrls::USERS_INDEX,
+                                    'bullet' => '<span class="bullet bullet-dot"></span>',
+
+                                ],
+
+                                [
+                                    'title'  => 'Create Users',
+                                    'path'   => AppUrls::USERS_CREATE,
+                                    'bullet' => '<span class="bullet bullet-dot"></span>',
+
+                                ],
+
+                            ],
+                        ],
+                    ],
+                    [
                         'title'      => 'Permissions',
                         'path'       => AppUrls::PERMISSON_INDEX,
                         'bullet'     => '<span class="bullet bullet-dot"></span>',

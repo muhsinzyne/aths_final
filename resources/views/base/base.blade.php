@@ -109,6 +109,26 @@
 @notifyJs
 
 
+@php
+    $modalArgs = [
+        'id' => 'demoModalId',
+        'title_id' => 'demoTitleId',
+        'title' => 'Demo Modal',
+        'body_id' => 'demoBodyId',
+    ];
+@endphp
+
+
+<x-modal-dialog :args="$modalArgs">
+    <script>
+        var modalId = "{{ $modalArgs['id'] }}";
+        var bodyId = "{{ $modalArgs['body_id'] }}";
+
+        var modal = $('#' + modalId);
+    </script>
+
+    <script src="{{ URL::asset('libs/custom/modal-popup.js')}}"></script>
+</x-modal-dialog>
 </body>
 {{-- end::Body --}}
 </html>
