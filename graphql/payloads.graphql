@@ -1,0 +1,9 @@
+
+type LoginPayload {
+	error: Boolean
+	message: String
+	user: User
+	roles: [String]
+	auth_token: String
+	refresh_token: String
+}

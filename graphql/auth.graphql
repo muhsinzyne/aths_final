@@ -1,0 +1,6 @@
+
+extend type Mutation {
+	login(email: String!, password: String!, client_type: String!, unique_id: String!): LoginPayload
+    @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@login")
+
+}
