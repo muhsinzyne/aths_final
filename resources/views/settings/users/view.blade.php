@@ -977,11 +977,14 @@
     </div>
 
 
+    @include('settings.users._edit_form')
 
 
 
 
+    @section('scripts')
 
-
+        <script src="{{ URL::asset('pages/user_view.js')}}"></script>
+    @endsection
 
 </x-base-layout>

@@ -6,6 +6,8 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class AuthUser extends User implements JWTSubject
 {
+    public $protectedItems = ['email_verified_at', 'password', 'api_token', 'remember_token'];
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
@@ -24,6 +26,18 @@ class AuthUser extends User implements JWTSubject
     public function getAllPermissionNames()
     {
         return $this->getAllPermissions()->pluck('name')->toArray();
+    }
+
+    public function getPublicItems()
+    {
+        $data = $this->toArray();
+        foreach ($data as $key => $value) {
+            if (in_array($key, $this->protectedItems)) {
+                unset($data[$key]);
+            }
+        }
+
+        return $data;
     }
 
     public function myRoleIdList()

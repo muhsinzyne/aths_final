@@ -1,6 +1,8 @@
 <?php
 namespace App\Core;
 
+use App\Constants\UserConst;
+
 class Theme
 {
     /**
@@ -770,12 +772,24 @@ class Theme
         return '';
     }
 
+    /**
+    *  My Theme Scripts Gose here
+    *
+    *
+    */
     public static function readableString($string)
     {
         $string = str_replace('_', ' ', $string);
         $string = ucwords($string);
 
         return $string;
+    }
+
+    public static function userTypeLit()
+    {
+        $data  = UserConst::getUserTypes();
+
+        return $data;
     }
 
     public static function getAssetsUrlPath()

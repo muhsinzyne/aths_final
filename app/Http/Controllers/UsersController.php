@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Constants\AppConst;
 use App\Constants\AppViews;
+use App\Constants\StatusCodes;
 use App\DataTables\UsersDataTable;
 use App\Models\AuthUser;
 use App\Models\User;
@@ -93,9 +95,41 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, AuthUser $user)
     {
-        //
+        $activeUser           = $this->canAccess('dashboard.index');
+        $view                 = theme()->getOption('page', 'view');
+        $page                 = $this->page;
+        $info                 = auth()->user()->info;
+        $page['title']        = trans('');
+        $page['breadcrumb'][] = ['title' => '', 'path' => ''];
+        $this->validate(
+            $request,
+            [
+                'first_name'        => 'required',
+                'last_name'         => 'required',
+                'email'             => 'required|max:100|unique:' . AppConst::DB_PREFIX . 'users,email,' . $user['id'] . ',id',
+            ]
+        );
+
+        $user->first_name = $request->input('first_name');
+        $user->last_name  =  $request->input('last_name');
+        $user->email      =  $request->input('email');
+        $user->type       = $request->input('role');
+        if ($user->update()) {
+            $response = [
+                'message' => 'User updated successfully',
+                'users'   => $user->getPublicItems(),
+            ];
+
+            return response()->json($response, StatusCodes::HTTP_OK);
+        } else {
+            $response = [
+                'message' => 'User could not be updated',
+            ];
+
+            return response()->json($response, StatusCodes::HTTP_NOT_MODIFIED);
+        }
     }
 
     /**
