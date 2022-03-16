@@ -1,6 +1,7 @@
 <?php
 
 use App\Constants\AppConst;
+use App\Models\AuthUser;
 
 return [
 
@@ -72,6 +73,11 @@ return [
             'driver' => 'eloquent',
             'model'  => App\Models\User::class,
         ],
+
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model'  => AuthUser,
+        // ],
 
         // 'users' => [
         //     'driver' => 'database',

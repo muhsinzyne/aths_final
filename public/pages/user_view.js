@@ -2,12 +2,16 @@ const modal = $('#kt_modal_update_details');
 const closeIcon = $(".modal-close");
 const editForm = $("#kt_modal_update_user_form");
 const editSubmit = $("#edit-submit");
+const discard = $("#discard-button");
 
 class UserUpdateDetails {
 
     static init() {
-        //alert(modal);
-        //alert("go mathematics");
+
+        discard.on('click', function(e) {
+            e.preventDefault();
+            modal.modal('hide');
+        });
 
         editForm.on('submit', function(e) {
             e.preventDefault();
@@ -19,24 +23,34 @@ class UserUpdateDetails {
                 method: method,
                 url: url,
                 data: formData,
-                success: function(data) {
-                    console.log(data);
-                    if (data.status == 200) {
-                        //toastr.success(data.message);
-                        //modal.modal('hide');
-                        // setTimeout(function() {
-                        //     location.reload();
-                        // }, 1000);
+                success: function(data, statusCode, xhr) {
+                    if (xhr.status == 200) {
+                        editSubmit.attr('data-kt-indicator', 'off');
+                        Swal.fire(
+                            'Updated',
+                            'User details updated successfully',
+                            'success'
+                        );
+                        modal.modal('hide');
                     } else {
-                        //toastr.error(data.message);
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                            footer: data.message
+                        });
+
                     }
                 },
                 error: function(error) {
-                    //toastr.error(data.message);
-                    console.log(error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        footer: error
+                    });
                 }
             });
-            alert("ajax compelted");
         });
 
 
@@ -59,7 +73,6 @@ class UserUpdateDetails {
                 if (result.value) {
                     closeModal.modal('hide');
                 } else if (result.dismiss === 'cancel') {
-                    closeModal.modal('hide');
                     Swal.fire({
                         text: "Your form has not been cancelled!.",
                         icon: "error",

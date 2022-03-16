@@ -13,6 +13,11 @@
     <link rel="shortcut icon" href="{{ asset(theme()->getDemo() . '/' .theme()->getOption('assets', 'favicon')) }}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="{{ URL::asset('libs/jquery/jquery.min.js')}}"></script>
+    <link href="{{ URL::asset('/lib/toaster/toastr.css')}}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ URL::asset(theme()->getDemo() . '/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+
+
 
     {{-- begin::Fonts --}}
     {{ theme()->includeFonts() }}
@@ -97,6 +102,10 @@
     @endforeach
     {{-- end::Page Custom Javascript --}}
 @endif
+<script src="{{ asset(theme()->getDemo() . '/plugins/custom/datatables/datatables.bundle.js') }}"></script>
+
+
+
 {{-- end::Javascript --}}
 
 @if (theme()->getViewMode() === 'preview')
@@ -105,6 +114,7 @@
 
 
 @yield('scripts')
+<script src="{{ URL::asset('libs/toaster/toastr.min.js')}}"></script>
 
 @notifyJs
 

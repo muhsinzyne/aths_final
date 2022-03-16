@@ -11,7 +11,8 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    protected $table = AppConst::DB_PREFIX . 'users';
+    protected $table       = AppConst::DB_PREFIX . 'users';
+    public $protectedItems = ['email_verified_at', 'password', 'api_token', 'remember_token'];
 
     use HasFactory, Notifiable;
     use SpatieLogsActivity;
@@ -91,5 +92,17 @@ class User extends Authenticatable implements MustVerifyEmail
     public function info()
     {
         return $this->hasOne(UserInfo::class);
+    }
+
+    public function getPublicItems()
+    {
+        $data = $this->toArray();
+        foreach ($data as $key => $value) {
+            if (in_array($key, $this->protectedItems)) {
+                unset($data[$key]);
+            }
+        }
+
+        return $data;
     }
 }

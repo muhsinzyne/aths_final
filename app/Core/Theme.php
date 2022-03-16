@@ -1,6 +1,7 @@
 <?php
 namespace App\Core;
 
+use App\Constants\PermissionConst;
 use App\Constants\UserConst;
 
 class Theme
@@ -790,6 +791,70 @@ class Theme
         $data  = UserConst::getUserTypes();
 
         return $data;
+    }
+
+    public static function getPermittedModuleNameList($moduleName, $permissions, $rawList)
+    {
+        $permissionFormated = self::formattedPermissions($permissions);
+        $rawFormatted       = self::formattedPermissions($rawList);
+        $crawList           = $rawFormatted[$moduleName] ?? [];
+        $cPermission        = $permissionFormated[$moduleName] ?? [];
+    }
+
+    public static function formattedPermissions($rawList)
+    {
+        $rawPermission = [];
+        foreach ($rawList as $key => $value) {
+            $splittedList = explode('.', $value);
+            $c            = 0;
+            while ($c < count($splittedList)) {
+                $assignment = [];
+                if ($c + 1 == count($splittedList)) {
+                    $assignment  = '1';
+                }
+
+                if ($c == 0) {
+                    if (!array_key_exists($splittedList[$c], $rawPermission)) {
+                        $rawPermission[$splittedList[$c]] = $assignment;
+                    }
+                }
+
+                if ($c == 1) {
+                    if (!array_key_exists($splittedList[$c], $rawPermission[$splittedList[0]])) {
+                        $rawPermission[$splittedList[0]][$splittedList[$c]] = $assignment;
+                    }
+                }
+
+                if ($c == 2) {
+                    $subArray = $rawPermission[$splittedList[0]][$splittedList[1]];
+                    if (!array_key_exists($splittedList[$c], $rawPermission[$splittedList[0]])) {
+                        $rawPermission[$splittedList[0]][$splittedList[1]][$splittedList[$c]] = $assignment;
+                    }
+                }
+
+                if ($c == 3) {
+                    $subArray = $rawPermission[$splittedList[0]][$splittedList[1]][$splittedList[2]];
+                    if (!array_key_exists($splittedList[$c], $rawPermission[$splittedList[0]][$splittedList[1]][$splittedList[2]])) {
+                        $rawPermission[$splittedList[0]][$splittedList[1]][$splittedList[2]][$splittedList[$c]] = $assignment;
+                    }
+                }
+
+                $c++;
+            }
+        }
+
+        return $rawPermission;
+    }
+
+    public static function getActionList()
+    {
+        $data = PermissionConst::getActionList();
+
+        return $data;
+    }
+
+    public static function getModuleActionList()
+    {
     }
 
     public static function getAssetsUrlPath()

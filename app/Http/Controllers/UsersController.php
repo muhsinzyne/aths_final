@@ -6,6 +6,7 @@ use App\Constants\AppViews;
 use App\Constants\StatusCodes;
 use App\DataTables\UsersDataTable;
 use App\Models\AuthUser;
+use App\Models\Crud\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,7 @@ class UsersController extends Controller
         $activeUser              = $this->canAccess('dashboard.index');
         $view                    = theme()->getOption('page', 'view');
         $page                    = $this->page;
-        $page['title']           = trans('Permission List');
+        $page['title']           = trans('Users List');
         $info                    = auth()->user()->info;
 
         return $dataTable->render(AppViews::USERS_INDEX, compact('page', 'info'));
@@ -63,6 +64,12 @@ class UsersController extends Controller
         $info                 = auth()->user()->info;
         $page['title']        = trans('View User Details');
         $page['breadcrumb'][] = ['title' => 'View User Details', 'path' => ''];
+
+        // echo '<pre>';
+        // print_r($user->myRoleIdList());
+        // echo '</pre>';
+        // die();
+
         if (view()->exists(AppViews::USER_VIEW)) {
             return view(AppViews::USER_VIEW, compact('page', 'info', 'user'));
         }
@@ -95,7 +102,7 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AuthUser $user)
+    public function update(Request $request, User $user)
     {
         $activeUser           = $this->canAccess('dashboard.index');
         $view                 = theme()->getOption('page', 'view');
@@ -115,7 +122,10 @@ class UsersController extends Controller
         $user->first_name = $request->input('first_name');
         $user->last_name  =  $request->input('last_name');
         $user->email      =  $request->input('email');
-        $user->type       = $request->input('role');
+        $user->type       = $request->input('type');
+        if ($request->input('roles')) {
+            $user->syncRoles($request->input('roles'));
+        }
         if ($user->update()) {
             $response = [
                 'message' => 'User updated successfully',

@@ -77,6 +77,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('settings')->group(function () {
         Route::resource('permission', PermissionController::class)->names('settings.permission');
         Route::resource('roles', RoleController::class)->names('settings.roles');
+        Route::delete('roles/{role_id}/remove_user/{user_id}', [RoleController::class, 'removeUserFromRole'])->name('settings.roles.remove_user_from_role');
         Route::resource('users', UsersController::class)->names('settings.users');
     });
 

@@ -2,6 +2,9 @@
 namespace App\Http\Controllers\Base;
 
 use App\Constants\AppConst;
+use App\Constants\UserTypes;
+use App\Models\AuthUser;
+use App\Models\Crud\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Routing\Controller as BaseController;
 use Exception;
@@ -35,7 +38,18 @@ class BaseHttpController extends BaseController
                 'active' => false,
             ];
 
+            $page['myroles'] = $this->getAllowdedRoleList();
+
             return $page;
+        }
+    }
+
+    private function getAllowdedRoleList()
+    {
+        if (Auth::user()->type == UserTypes::SU_ADMIN) {
+            return Role::all()->pluck('name', 'id')->toArray();
+        } else {
+            return Auth::user()->roles->pluck('name', 'id')->toArray();
         }
     }
 
@@ -89,7 +103,7 @@ class BaseHttpController extends BaseController
 
     public function canAccess($accessOrigin = 'dashboard.index', $onlywith = [])
     {
-        $user = Auth::user();
+        $user = AuthUser::findOrFail(Auth::user()->id);
         if ($accessOrigin == 'dashboard.index') {
             return $user;
         }

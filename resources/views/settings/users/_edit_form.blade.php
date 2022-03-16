@@ -81,7 +81,7 @@
                             </label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="role" aria-label="{{__('Select Role')}}" data-control="select2" data-placeholder="{{__('Select a Type..')}}" class="form-select form-select-solid" data-dropdown-parent="#kt_modal_update_details">
+                            <select name="type" aria-label="{{__('Select Type')}}"  data-control="select2" data-placeholder="{{__('Select a Type..')}}" class="form-select form-select-solid" data-dropdown-parent="#kt_modal_update_details">
                                 <option value=""> {{__('Select a Type')}} </option>
                                 @foreach (theme()->userTypeLit() as $key => $type)
                                     <option value="{{$key}}" {{$user->type === $key ? 'selected': ''}}>{{$type}}</option>
@@ -89,6 +89,23 @@
 
                             </select>
                         </div>
+
+                        <div class="d-flex flex-column mb-7 fv-row">
+                            <label class="fs-6 fw-bold mb-2">
+                                <span>{{__('User Role')}}</span>
+                                <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="{{__('User Role')}}"></i>
+                            </label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <select name="roles[]" aria-label="{{__('Select Roles')}}"  multiple="multiple"  data-control="select2" data-placeholder="{{__('Select a Role..')}}" class="form-select form-select-solid" data-dropdown-parent="#kt_modal_update_details">
+                                <option value=""> {{__('Select a Type')}} </option>
+                                @foreach ($page['myroles']  as $key => $role)
+                                    <option value="{{$key}}" {{in_array($key, $user->myRoleIdList()) ? 'selected' : '' }}>{{$role}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
                     </div>
                     {{-- <div class="fw-boldest fs-3 rotate collapsible mb-7" data-bs-toggle="collapse"
                         href="#kt_modal_update_user_address" role="button" aria-expanded="false"
@@ -108,7 +125,7 @@
                 </div>
             </div>
             <div class="modal-footer flex-center">
-                <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel"> {{__('Discard')}} </button>
+                <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel" id="discard-button"> {{__('Discard')}} </button>
                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit" id="edit-submit">
                     <span class="indicator-label">{{__('Submit')}} </span>
                     <span class="indicator-progress"> {{__('Please wait...')}}

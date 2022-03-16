@@ -1,6 +1,10 @@
 <x-base-layout :page="$page">
 
-    {{Form::open(array('url'=>'settings/roles','method'=>'post' ))}}
+
+
+    {{ Form::model($role, ['route' => ['settings.roles.update', $role->id],'method' => 'PUT','id' => 'kt_account_role_form','class' => 'form']) }}
+    @method('PUT')
+
     <div class="post d-flex flex-column-fluid" id="kt_post">
         <div id="kt_content_container" class="container-xxl">
             <div class="d-flex flex-column flex-lg-row">
@@ -9,7 +13,7 @@
                     <div class="card card-flush mb-6 mb-xl-9">
                         <div class="card-header pt-5">
                             <div class="card-title">
-                                <h2 class="d-flex align-items-center"> {{__('Create new Role')}}
+                                <h2 class="d-flex align-items-center"> {{__('Edit Role - ')}} {{ $role->name }}</h2>
                                     <span class="text-gray-600 fs-6 ms-1">  </span>
                                 </h2>
                             </div>
@@ -74,7 +78,7 @@
                                                         <td>
                                                             <div class="d-flex">
                                                                 @foreach (theme()->getActionList() as $actionKey =>  $actionName)
-                                                                 @include('settings.roles._action_item_create')
+                                                                 @include('settings.roles._action_item_edit')
                                                                 @endforeach
                                                             </div>
                                                         </td>
@@ -93,13 +97,6 @@
                             <button type="reset"
                                 class="btn btn-white btn-active-light-primary me-2">{{ __('Discard') }}</button>
 
-                            <button type="submit" name="save_and_add" value="1" class="btn btn-primary me-2"
-                                id="kt_account_profile_details_submit">
-                                @include('partials.general._button-indicator', [
-                                    'label' => __( ((isset($permission)) ? 'Update' : 'Save') . ' & Create'),
-                                ])
-                            </button>
-
                             <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">
                                 @include('partials.general._button-indicator', [
                                     'label' => __( ((isset($permission)) ? 'Update' : 'Save').''),
@@ -117,8 +114,7 @@
 
 
     @section('scripts')
-
-    <script src="{{ URL::asset('pages/permissions_create.js')}}"></script>
-@endsection
+    <script src="{{ URL::asset('pages/roles_edit.js')}}"></script>
+    @endsection
 
 </x-base-layout>

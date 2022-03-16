@@ -11,6 +11,7 @@ class AppViews
     const ROLES_INDEX  = 'settings.roles.index';
     const ROLES_CREATE = 'settings.roles.create';
     const ROLES_EDIT   = 'settings.roles.edit';
+    const ROLES_VIEW   = 'settings.roles.view';
 
     const USERS_INDEX  = 'settings.users.index';
     const USERS_CREATE = 'settings.users.create';
