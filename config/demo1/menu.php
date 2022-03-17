@@ -120,11 +120,6 @@ return [
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => [
                     [
-                        'title'  => 'Overview',
-                        'path'   => 'account/overview',
-                        'bullet' => '<span class="bullet bullet-dot"></span>',
-                    ],
-                    [
                         'title'  => 'Settings',
                         'path'   => 'account/settings',
                         'bullet' => '<span class="bullet bullet-dot"></span>',
@@ -148,9 +143,9 @@ return [
         ],
 
         [
-            'title'      => 'System',
+            'title'      => 'Logs',
             'icon'       => [
-                'svg'  => theme()->getSvgIcon('demo1/media/icons/duotune/general/gen025.svg', 'svg-icon-2'),
+                'svg'  => theme()->getSvgIcon('demo1/media/icons/duotune/general/gen024.svg', 'svg-icon-2'),
                 'font' => '<i class="bi bi-layers fs-3"></i>',
             ],
             'classes'    => ['item' => 'menu-accordion'],
@@ -160,20 +155,6 @@ return [
             'sub'        => [
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => [
-                    [
-                        'title'      => 'Settings',
-                        'path'       => '#',
-                        'bullet'     => '<span class="bullet bullet-dot"></span>',
-                        'attributes' => [
-                            'link' => [
-                                'title'             => 'Coming soon',
-                                'data-bs-toggle'    => 'tooltip',
-                                'data-bs-trigger'   => 'hover',
-                                'data-bs-dismiss'   => 'click',
-                                'data-bs-placement' => 'right',
-                            ],
-                        ],
-                    ],
                     [
                         'title'  => 'Audit Log',
                         'path'   => 'log/audit',

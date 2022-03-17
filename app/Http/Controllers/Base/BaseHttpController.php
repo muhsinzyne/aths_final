@@ -46,10 +46,14 @@ class BaseHttpController extends BaseController
 
     private function getAllowdedRoleList()
     {
-        if (Auth::user()->type == UserTypes::SU_ADMIN) {
-            return Role::all()->pluck('name', 'id')->toArray();
+        if (Auth::check()) {
+            if (Auth::user()->type == UserTypes::SU_ADMIN) {
+                return Role::all()->pluck('name', 'id')->toArray();
+            } else {
+                return Auth::user()->roles->pluck('name', 'id')->toArray();
+            }
         } else {
-            return Auth::user()->roles->pluck('name', 'id')->toArray();
+            return [];
         }
     }
 

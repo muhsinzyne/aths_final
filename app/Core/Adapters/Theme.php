@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Core\Adapters;
 
 use Illuminate\Contracts\View\View;
@@ -97,17 +96,17 @@ class Theme extends \App\Core\Theme
 
         $a = '';
         if (count($params) && $path !== '#') {
-            $a = '?'.http_build_query($params);
+            $a = '?' . http_build_query($params);
         }
 
         // check if the route exist in the laravel
         $name = str_replace('/', '.', $path);
         if (Route::has($name)) {
-            return route($name).$a;
+            return route($name) . $a;
         }
 
         // otherwise return as url
-        return url($path).$a;
+        return url($path) . $a;
     }
 
     /**
@@ -153,7 +152,7 @@ class Theme extends \App\Core\Theme
      *
      * @return View
      */
-    public static function getView($path, $params = array(), $once = false)
+    public static function getView($path, $params = [], $once = false)
     {
         // Check if the layout file exist
         if (view()->exists($path)) {
@@ -162,7 +161,7 @@ class Theme extends \App\Core\Theme
 
         // Append demo folder for layout view
         if (Str::startsWith($path, 'layout')) {
-            $path = str_replace('layout', 'layout/'.self::$demo, $path);
+            $path = str_replace('layout', 'layout/' . self::$demo, $path);
         }
 
         $view = view($path, $params);
@@ -185,7 +184,7 @@ class Theme extends \App\Core\Theme
         if (self::hasOption('assets', 'fonts/google')) {
             $fonts = self::getOption('assets', 'fonts/google');
 
-            echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family='.implode('|', $fonts).'"/>';
+            echo '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=' . implode('|', $fonts) . '"/>';
         }
     }
 
@@ -216,24 +215,24 @@ class Theme extends \App\Core\Theme
         $demo = self::getDemo() ?? 'demo1';
 
         // Map the config path
-        if (array_key_exists($scope, config($demo.'.general', []))) {
-            $scope = 'general.'.$scope;
+        if (array_key_exists($scope, config($demo . '.general', []))) {
+            $scope = 'general.' . $scope;
         }
 
         if (in_array($scope, ['page', 'pages'])) {
             $scope    = 'pages';
             $segments = request()->segments();
-            $scope    .= '.'.implode('.', $segments);
+            $scope .= '.' . implode('.', $segments);
         }
 
         // Get current page path
         $deepPath = '';
         if (!empty($path)) {
-            $deepPath = '.'.str_replace('/', '.', $path);
+            $deepPath = '.' . str_replace('/', '.', $path);
         }
 
         // Demo config
-        $demoConfig = config($demo.'.'.$scope.$deepPath, $default);
+        $demoConfig = config($demo . '.' . $scope . $deepPath, $default);
 
         // check if it is a callback
         if (is_callable($demoConfig) && !is_string($demoConfig)) {
@@ -264,7 +263,7 @@ class Theme extends \App\Core\Theme
      */
     public static function getProductNameHtml()
     {
-        return '<strong>'.self::getProductName().' Laravel</strong>&nbsp;';
+        return '<strong>' . self::getProductName() . ' Laravel</strong>&nbsp;';
     }
 
     /**
@@ -314,10 +313,10 @@ class Theme extends \App\Core\Theme
 
         $parent = implode('.', $routes);
 
-        return $parent.'.'.$name;
+        return $parent . '.' . $name;
     }
 
-    public static function putProVersionTooltip($attr = array())
+    public static function putProVersionTooltip($attr = [])
     {
         ob_start();
 
@@ -331,15 +330,15 @@ class Theme extends \App\Core\Theme
     {
         if ($dark === true) {
             if (self::isDarkMode()) {
-                $file = str_replace(".svg", "-dark.svg", $file);
-                $file = str_replace(".png", "-dark.png", $file);
-                $file = str_replace(".jpg", "-dark.jpg", $file);
+                $file = str_replace('.svg', '-dark.svg', $file);
+                $file = str_replace('.png', '-dark.png', $file);
+                $file = str_replace('.jpg', '-dark.jpg', $file);
             }
         }
 
-        $folder = 'illustrations/'.self::getOption('layout', 'illustrations/set');
+        $folder = 'illustrations/' . self::getOption('layout', 'illustrations/set');
 
-        return self::getMediaUrlPath().$folder.'/'.$file;
+        return self::getMediaUrlPath() . $folder . '/' . $file;
     }
 
     /**
@@ -349,7 +348,7 @@ class Theme extends \App\Core\Theme
      */
     public static function isDarkMode()
     {
-        return self::getCurrentMode() === 'dark';
+        return self::getCurrentMode() === 'light';
     }
 
     /**
@@ -383,20 +382,20 @@ class Theme extends \App\Core\Theme
      */
     public static function getMediaUrlPath()
     {
-        return theme()->getDemo().'/media/';
+        return theme()->getDemo() . '/media/';
     }
 
     public static function getImageUrl($folder, $file, $dark = true)
     {
         if ($dark) {
             if (self::isDarkMode()) {
-                $file = str_replace(".svg", "-dark.svg", $file);
-                $file = str_replace(".png", "-dark.png", $file);
-                $file = str_replace(".jpg", "-dark.jpg", $file);
+                $file = str_replace('.svg', '-dark.svg', $file);
+                $file = str_replace('.png', '-dark.png', $file);
+                $file = str_replace('.jpg', '-dark.jpg', $file);
             }
         }
 
-        return self::getMediaUrlPath().$folder.'/'.$file;
+        return self::getMediaUrlPath() . $folder . '/' . $file;
     }
 
     /**
@@ -412,19 +411,19 @@ class Theme extends \App\Core\Theme
         self::$config = $mergedConfig->all();
 
         // Get config by url path
-        $configPath = Theme::$demo.'.pages.'.str_replace('/', '.', Theme::getPagePath());
+        $configPath = Theme::$demo . '.pages.' . str_replace('/', '.', Theme::getPagePath());
         $pageConfig = collect(config($configPath));
 
         // Merge group config with child config
-        $pageGroupOptions = Theme::getPageGroupOptions(config(Theme::$demo.'.pages'), Theme::getPagePath());
+        $pageGroupOptions = Theme::getPageGroupOptions(config(Theme::$demo . '.pages'), Theme::getPagePath());
         if ($pageGroupOptions) {
             $overridenConfig = $pageConfig->replaceRecursive($pageGroupOptions);
             config([$configPath => $overridenConfig->all()]);
         }
 
-        $generalConfig = collect(config(Theme::$demo.'.general'));
+        $generalConfig = collect(config(Theme::$demo . '.general'));
         // Merge general config with page level config
-        config([Theme::$demo.'.general' => $generalConfig->replaceRecursive(config($configPath))->all()]);
+        config([Theme::$demo . '.general' => $generalConfig->replaceRecursive(config($configPath))->all()]);
     }
 
     /**
@@ -498,5 +497,4 @@ class Theme extends \App\Core\Theme
 
         return $total;
     }
-
 }
