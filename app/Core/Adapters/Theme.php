@@ -348,7 +348,7 @@ class Theme extends \App\Core\Theme
      */
     public static function isDarkMode()
     {
-        return self::getCurrentMode() === 'light';
+        return self::getCurrentMode() === 'dark';
     }
 
     /**

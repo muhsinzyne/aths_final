@@ -13,6 +13,4 @@ class AppConst
     const TERMS           = '';
     const ORGANIZATION    = 'ATHS';
     const APP             = 'Communicator';
-
-    const DATE_FORMAT = 'd M Y H:i A';
 }
