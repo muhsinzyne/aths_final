@@ -69,8 +69,9 @@ class PermissionController extends Controller
                 //'permissions' => 'required',
             ]
         );
+        $description = $request->input('description');
 
-        $permission = Permission::create(['name' => $request->input('name'), 'guard_name' => $request->input('guard_name')]);
+        $permission = Permission::create(['name' => $request->input('name'), 'guard_name' => $request->input('guard_name'), 'description' => $description]);
         if ($permission) {
             notify()->success('Permission -  has been Created');
         }
@@ -132,9 +133,10 @@ class PermissionController extends Controller
             ]
         );
 
-        $permission->name       = $request->input('name');
-        $permission->guard_name = $request->input('guard_name');
-        $returnBack             = $request->input('save_and_add') ?? false;
+        $permission->name        = $request->input('name');
+        $permission->guard_name  = $request->input('guard_name');
+        $permission->description = $request->input('description');
+        $returnBack              = $request->input('save_and_add') ?? false;
         if ($permission->update()) {
             notify()->success('Permission - ' . $permission->name . ' has been updated');
         }

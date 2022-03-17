@@ -21,12 +21,18 @@ class PermissionsDataTable extends DataTable
         return datatables()
             ->eloquent($query)
             ->addIndexColumn()
+            ->editColumn('name', function (Permission $model) {
+                return view('settings.permissions._name', compact('model'));
+            })
+            ->editColumn('guard_name', function (Permission $model) {
+                return view('settings.permissions._guard_name', compact('model'));
+            })
             ->addColumn('assigned_roles', function (Permission $model) {
                 return view('settings.permissions._assigned_roles', compact('model'));
             })
             ->rawColumns(['actions', 'assigned_roles'])
             ->editColumn('created_at', function (Permission $model) {
-                return $model->created_at->format('d M, Y H:i:s');
+                return $model->created_at->format('d M Y, H:i A');
             })
             ->addColumn('actions', function ($model) {
                 return view('settings.permissions._actions', compact('model'));

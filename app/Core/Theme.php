@@ -793,6 +793,23 @@ class Theme
         return $data;
     }
 
+    public static function getAnyColor($id = 0)
+    {
+        $list = [
+            'primary',
+            'success',
+            'info',
+            'warning',
+            'danger',
+            'dark',
+            'light',
+        ];
+
+        $result =  $id % 6;
+
+        return $list[$result];
+    }
+
     public static function getPermittedModuleNameList($moduleName, $permissions, $rawList)
     {
         $permissionFormated = self::formattedPermissions($permissions);

@@ -24,6 +24,19 @@
             @enderror
         </div>
     </div>
+
+    <div class="row mb-6">
+        {{ Form::label('description', 'Description', ['class' => 'col-lg-4 col-form-label fw-bold fs-6']) }}
+        <div class="col-lg-8 fv-row">
+
+            {{ Form::text('description', '', ['class' => 'form-control form-control-lg form-control-solid','placeholder' => 'Add a small description to identity','required']) }}
+            @error('description')
+                <span class="invalid-name" role="alert">
+                    <strong class="text-danger">{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
 </div>
 
 <div class="card-footer d-flex justify-content-end py-6 px-9">
