@@ -1,15 +1,16 @@
 "use strict";
 
 // Class definition
-var KTAccountSettingsSigninMethods = function () {
+var KTAccountSettingsSigninMethods = function() {
     // Private functions
-    var initSettings = function () {
+    var initSettings = function() {
 
         // UI elements
         var signInMainEl = document.getElementById('kt_signin_email');
         var signInEditEl = document.getElementById('kt_signin_email_edit');
         var passwordMainEl = document.getElementById('kt_signin_password');
         var passwordEditEl = document.getElementById('kt_signin_password_edit');
+
 
         // button elements
         var signInChangeEmail = document.getElementById('kt_signin_email_button');
@@ -18,79 +19,46 @@ var KTAccountSettingsSigninMethods = function () {
         var passwordCancel = document.getElementById('kt_password_cancel');
 
         // toggle UI
-        signInChangeEmail.querySelector('button').addEventListener('click', function () {
+        signInChangeEmail.querySelector('button').addEventListener('click', function() {
             toggleChangeEmail();
         });
 
-        signInCancelEmail.addEventListener('click', function () {
+        signInCancelEmail.addEventListener('click', function() {
             toggleChangeEmail();
         });
 
-        passwordChange.querySelector('button').addEventListener('click', function () {
+        passwordChange.querySelector('button').addEventListener('click', function() {
             toggleChangePassword();
         });
 
-        passwordCancel.addEventListener('click', function () {
+        passwordCancel.addEventListener('click', function() {
             toggleChangePassword();
         });
 
-        var toggleChangeEmail = function () {
+        var toggleChangeEmail = function() {
             signInMainEl.classList.toggle('d-none');
             signInChangeEmail.classList.toggle('d-none');
             signInEditEl.classList.toggle('d-none');
         }
 
-        var toggleChangePassword = function () {
+        var toggleChangePassword = function() {
             passwordMainEl.classList.toggle('d-none');
             passwordChange.classList.toggle('d-none');
             passwordEditEl.classList.toggle('d-none');
         }
     }
 
-    var handleChangeEmail = function (e) {
+    var handleChangeEmail = function(e) {
         var validation;
 
         // form elements
         var form = document.getElementById('kt_signin_change_email');
         var submitButton = form.querySelector('#kt_signin_submit');
 
-        validation = FormValidation.formValidation(
-            form,
-            {
-                fields: {
-                    email: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Email is required'
-                            },
-                            emailAddress: {
-                                message: 'The value is not a valid email address'
-                            }
-                        }
-                    },
-
-                    password: {
-                        validators: {
-                            notEmpty: {
-                                message: 'Password is required'
-                            }
-                        }
-                    }
-                },
-
-                plugins: { //Learn more: https://formvalidation.io/guide/plugins
-                    trigger: new FormValidation.plugins.Trigger(),
-                    bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row'
-                    })
-                }
-            }
-        );
-
-        submitButton.addEventListener('click', function (e) {
+        submitButton.addEventListener('click', function(e) {
             e.preventDefault();
 
-            validation.validate().then(function (status) {
+            validation.validate().then(function(status) {
                 if (status === 'Valid') {
 
                     // Show loading indication
@@ -101,7 +69,7 @@ var KTAccountSettingsSigninMethods = function () {
 
                     // Send ajax request
                     axios.post(form.getAttribute('action'), new FormData(form))
-                        .then(function (response) {
+                        .then(function(response) {
                             // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                             Swal.fire({
                                 text: "Your email has been successfully changed.",
@@ -113,7 +81,7 @@ var KTAccountSettingsSigninMethods = function () {
                                 }
                             });
                         })
-                        .catch(function (error) {
+                        .catch(function(error) {
                             let dataMessage = error.response.data.message;
                             let dataErrors = error.response.data.errors;
 
@@ -134,7 +102,7 @@ var KTAccountSettingsSigninMethods = function () {
                                 });
                             }
                         })
-                        .then(function () {
+                        .then(function() {
                             // always executed
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -158,7 +126,7 @@ var KTAccountSettingsSigninMethods = function () {
         });
     }
 
-    var handleChangePassword = function (e) {
+    var handleChangePassword = function(e) {
         var validation;
 
         // form elements
@@ -166,8 +134,7 @@ var KTAccountSettingsSigninMethods = function () {
         var submitButton = form.querySelector('#kt_password_submit');
 
         validation = FormValidation.formValidation(
-            form,
-            {
+            form, {
                 fields: {
                     current_password: {
                         validators: {
@@ -191,7 +158,7 @@ var KTAccountSettingsSigninMethods = function () {
                                 message: 'Confirm Password is required'
                             },
                             identical: {
-                                compare: function () {
+                                compare: function() {
                                     return form.querySelector('[name="password"]').value;
                                 },
                                 message: 'The password and its confirm are not the same'
@@ -209,10 +176,10 @@ var KTAccountSettingsSigninMethods = function () {
             }
         );
 
-        submitButton.addEventListener('click', function (e) {
+        submitButton.addEventListener('click', function(e) {
             e.preventDefault();
 
-            validation.validate().then(function (status) {
+            validation.validate().then(function(status) {
                 if (status == 'Valid') {
 
                     // Show loading indication
@@ -223,7 +190,7 @@ var KTAccountSettingsSigninMethods = function () {
 
                     // Send ajax request
                     axios.post(form.getAttribute('action'), new FormData(form))
-                        .then(function (response) {
+                        .then(function(response) {
                             // Show message popup. For more info check the plugin's official documentation: https://sweetalert2.github.io/
                             Swal.fire({
                                 text: "Your password has been successfully reset.",
@@ -235,7 +202,7 @@ var KTAccountSettingsSigninMethods = function () {
                                 }
                             });
                         })
-                        .catch(function (error) {
+                        .catch(function(error) {
                             let dataMessage = error.response.data.message;
                             let dataErrors = error.response.data.errors;
 
@@ -256,7 +223,7 @@ var KTAccountSettingsSigninMethods = function () {
                                 });
                             }
                         })
-                        .then(function () {
+                        .then(function() {
                             // always executed
                             // Hide loading indication
                             submitButton.removeAttribute('data-kt-indicator');
@@ -282,7 +249,7 @@ var KTAccountSettingsSigninMethods = function () {
 
     // Public methods
     return {
-        init: function () {
+        init: function() {
             initSettings();
             handleChangeEmail();
             handleChangePassword();
@@ -291,6 +258,6 @@ var KTAccountSettingsSigninMethods = function () {
 }();
 
 // On document ready
-KTUtil.onDOMContentLoaded(function () {
+KTUtil.onDOMContentLoaded(function() {
     KTAccountSettingsSigninMethods.init();
 });

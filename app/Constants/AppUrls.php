@@ -15,4 +15,6 @@ class AppUrls
     const USERS_CREATE = 'settings/users/create';
     const USERS_EDIT   = 'settings/users/{id}/edit';
     const USERS_DELETE = 'settings/users/{id}/delete';
+
+    const SETTINGS_PROFILE_INDEX = 'settings/profile';
 }

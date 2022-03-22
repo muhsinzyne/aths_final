@@ -18,4 +18,8 @@ class AppViews
     const USER_VIEW    = 'settings.users.view';
     const USERS_EDIT   = 'settings.users.edit';
     const USERS_DELETE = 'settings.users.delete';
+
+    const PROFILE_INDEX = 'settings.profile.index';
+
+    const PROFILE_EDIT = 'settings.profile.edit';
 }

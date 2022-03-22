@@ -9,6 +9,7 @@ use App\Http\Controllers\Logs\AuditLogsController;
 use App\Http\Controllers\Logs\SystemLogsController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,7 @@ Route::fallback(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashBoardController::class, 'index'])->name('home');
 
+    // to remove after project set
     Route::prefix('account')->group(function () {
         Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
         Route::put('settings', [SettingsController::class, 'update'])->name('settings.update');
@@ -79,6 +81,11 @@ Route::middleware('auth')->group(function () {
         Route::resource('roles', RoleController::class)->names('settings.roles');
         Route::delete('roles/{role_id}/remove_user/{user_id}', [RoleController::class, 'removeUserFromRole'])->name('settings.roles.remove_user_from_role');
         Route::resource('users', UsersController::class)->names('settings.users');
+        Route::get('profile', [ProfileController::class, 'index'])->name('settings.profile');
+        Route::put('profile', [ProfileController::class, 'update'])->name('settings.profile');
+        Route::get('profile/edit', [ProfileController::class, 'edit'])->name('settings.profile.edit');
+        Route::put('profile/change_password', [ProfileController::class, 'changePassword'])->name('settings.profile.change_password');
+        Route::put('profile/change_email', [ProfileController::class, 'changeEmail'])->name('settings.profile.change_email');
     });
 
     Route::get('demo', [DemoController::class, 'index'])->name('demo.index');

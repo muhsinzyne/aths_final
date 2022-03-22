@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
@@ -126,9 +125,6 @@ class SettingsController extends Controller
     public function changePassword(SettingsPasswordRequest $request)
     {
         // prevent change password for demo account
-        if ($request->input('current_email') === 'demo@demo.com') {
-            return redirect()->intended('account/settings');
-        }
 
         auth()->user()->update(['password' => Hash::make($request->input('password'))]);
 

@@ -17,7 +17,7 @@ var KTAccountSettingsSigninMethods = function() {
         var signInCancelEmail = document.getElementById('kt_signin_cancel');
         var passwordChange = document.getElementById('kt_signin_password_button');
         var passwordCancel = document.getElementById('kt_password_cancel');
-        X
+
         // toggle UI
         signInChangeEmail.querySelector('button').addEventListener('click', function() {
             toggleChangeEmail();
@@ -55,13 +55,45 @@ var KTAccountSettingsSigninMethods = function() {
         var form = document.getElementById('kt_signin_change_email');
         var submitButton = form.querySelector('#kt_signin_submit');
 
+
+        validation = FormValidation.formValidation(
+            form, {
+                fields: {
+                    email: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Email canot be empty'
+                            }
+                        }
+                    },
+
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: 'password canot be empty'
+                            }
+                        }
+                    },
+
+
+                },
+
+                plugins: { //Learn more: https://formvalidation.io/guide/plugins
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row'
+                    })
+                }
+            }
+        );
+
         submitButton.addEventListener('click', function(e) {
             e.preventDefault();
 
+            console.log(validation);
+
             validation.validate().then(function(status) {
                 if (status === 'Valid') {
-
-                    // Show loading indication
                     submitButton.setAttribute('data-kt-indicator', 'on');
 
                     // Disable button to avoid multiple click
@@ -110,7 +142,6 @@ var KTAccountSettingsSigninMethods = function() {
                             // Enable button
                             submitButton.disabled = false;
                         });
-
                 } else {
                     Swal.fire({
                         text: "Sorry, looks like there are some errors detected, please try again.",
@@ -123,6 +154,7 @@ var KTAccountSettingsSigninMethods = function() {
                     });
                 }
             });
+
         });
     }
 

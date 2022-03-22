@@ -786,6 +786,11 @@ class Theme
         return $string;
     }
 
+    public function getTollTipIcon($string = '')
+    {
+        return "<i class='fas fa-exclamation-circle ms-1 fs-7' data-bs-toggle='tooltip' title=' . $string . '></i>";
+    }
+
     public static function userTypeLit()
     {
         $data  = UserConst::getUserTypes();

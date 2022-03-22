@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http\Requests\Account;
 
+use App\Constants\AppConst;
 use App\Rules\MatchOldPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -25,8 +25,8 @@ class SettingsEmailRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'            => 'required|string|email|max:255|unique:users',
-            'current_password' => ['required', new MatchOldPassword],
+            'email'            => 'required|string|email|max:255|unique:' . AppConst::DB_PREFIX . 'users',
+            'current_password' => ['required', new MatchOldPassword()],
         ];
     }
 }

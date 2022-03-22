@@ -91,7 +91,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function info()
     {
-        return $this->hasOne(UserInfo::class);
+        return $this->belongsTo(UserInfo::class, 'id', 'user_id');
     }
 
     public function getPublicItems()

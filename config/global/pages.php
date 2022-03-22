@@ -194,6 +194,17 @@ return [
                 ],
             ],
         ],
+        'profile' => [
+            'assets' => [
+                'custom' => [
+                    'js' => [
+                        'js/custom/account/settings/profile-details.js',
+                        'js/custom/settings/profile/sign-in-methods.js',
+                        'js/custom/modals/two-factor-authentication.js',
+                    ],
+                ],
+            ],
+        ]
     ],
 
     // Documentation pages

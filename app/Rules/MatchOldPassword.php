@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Rules;
 
 use App\Models\User;
@@ -29,6 +28,9 @@ class MatchOldPassword implements Rule
     public function passes($attribute, $value)
     {
         $user = User::where('email', request()->input('current_email'))->first();
+        if (!$user) {
+            return false;
+        }
 
         return Hash::check($value, $user->password);
     }
