@@ -1,5 +1,6 @@
 <?php
 
+use App\Constants\AppConst;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,7 +14,7 @@ class AddApiTokenColumn extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table(AppConst::DB_PREFIX . 'users', function (Blueprint $table) {
             $table->string('api_token', 80)->after('password')
                 ->unique()
                 ->nullable()
@@ -28,7 +29,7 @@ class AddApiTokenColumn extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table(AppConst::DB_PREFIX . 'users', function (Blueprint $table) {
             $table->dropColumn('api_token');
         });
     }
