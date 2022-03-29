@@ -22,4 +22,8 @@ class AppViews
     const PROFILE_INDEX = 'settings.profile.index';
 
     const PROFILE_EDIT = 'settings.profile.edit';
+
+    const STUDENTS_INDEX = 'students.list.index';
+
+    const STUDENTS_VIEW = 'students.view.view';
 }

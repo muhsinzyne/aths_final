@@ -17,4 +17,6 @@ class AppUrls
     const USERS_DELETE = 'settings/users/{id}/delete';
 
     const SETTINGS_PROFILE_INDEX = 'settings/profile';
+
+    const STUDENTS_INDEX = 'students';
 }

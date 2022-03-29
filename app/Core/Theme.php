@@ -3,6 +3,8 @@ namespace App\Core;
 
 use App\Constants\PermissionConst;
 use App\Constants\UserConst;
+use App\Constants\UserTypes;
+use Carbon\Carbon;
 
 class Theme
 {
@@ -771,6 +773,44 @@ class Theme
         }
 
         return '';
+    }
+
+    /**
+    * Email Splitter
+    *
+    *
+    */
+    public function splitStringToArray($string, $splitter = ';')
+    {
+        $array = explode($splitter, $string);
+
+        return $array;
+    }
+
+    public static function dob($date, $format = 'd/m/Y')
+    {
+        $date = Carbon::parse($date);
+
+        return $date->format($format);
+    }
+
+    public function isGenderMale($param)
+    {
+        if (in_array($param, UserTypes::getGenderListLetter())) {
+            return $param == UserTypes::MALE ? true : false;
+        }
+
+        return false;
+    }
+
+    /**
+    * Student Image based on student ID
+    *
+    *
+    */
+    public static function getStudentImage($studentId)
+    {
+        return config('app.integration_url') . 'Get_Image_Student/' . config('app.integration_token') . '/' . $studentId;
     }
 
     /**

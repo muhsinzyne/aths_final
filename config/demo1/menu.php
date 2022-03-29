@@ -8,12 +8,32 @@ return [
         [
             'title' => 'DashBoard',
             'path'  => 'index',
-            'icon'  => theme()->getSvgIcon('demo1/media/icons/duotune/art/art002.svg', 'svg-icon-2'),
+            'icon'  => '<i class="bi bi-grid fs-3"></i>',
         ],
-
         [
             'classes' => ['content' => 'pt-8 pb-2'],
             'content' => '<span class="menu-section text-muted text-uppercase fs-8 ls-1">Configurations</span>',
+        ],
+
+        [
+            'title'      => 'Students',
+            'icon'       => '<i class="bi bi-people fs-3"></i>',
+            'classes'    => ['item' => 'menu-accordion'],
+            'attributes' => [
+                'data-kt-menu-trigger' => 'click',
+            ],
+            'sub'        => [
+                'class' => 'menu-sub-accordion menu-active-bg',
+                'items' => [
+                    [
+                        'title'      => 'Students List',
+                        'path'       => AppUrls::STUDENTS_INDEX,
+                        'bullet'     => '<i class="fa-solid fa-list"></i>',
+
+                    ],
+
+                ],
+            ],
         ],
 
         [

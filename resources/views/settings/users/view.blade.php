@@ -983,8 +983,7 @@
 
 
     @section('scripts')
-
-        <script src="{{ URL::asset('pages/user_view.js')}}"></script>
+        <script src="{{ URL::asset('pages/settings/users/view.js')}}"></script>
     @endsection
 
 </x-base-layout>

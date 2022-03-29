@@ -28,8 +28,9 @@ class RoleController extends Controller
         $page              = $this->page;
         $page['title']     = trans('Roles List');
         $info              = auth()->user()->info;
-        $roles             = Role::getRoleList($activeUser);
+        $roles             = Role::getRoleList($activeUser) ?? [];
         $rowPermissionList = Permission::getAllPermission();
+
         if (view()->exists(AppViews::ROLES_INDEX)) {
             return view(AppViews::ROLES_INDEX, compact('page', 'info', 'roles', 'activeUser', 'rowPermissionList'));
         }

@@ -11,6 +11,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\Scrap\StudentExamAuditController;
+use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -62,6 +64,8 @@ Route::fallback(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashBoardController::class, 'index'])->name('home');
 
+    Route::resource('students', StudentsController::class)->names('students');
+
     // to remove after project set
     Route::prefix('account')->group(function () {
         Route::get('settings', [SettingsController::class, 'index'])->name('settings.index');
@@ -89,6 +93,8 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('demo', [DemoController::class, 'index'])->name('demo.index');
+
+    Route::get('scrap/student-exam', [StudentExamAuditController::class, 'index'])->name('scrap.student-exam');
 });
 
 // Route::resource('users', UsersController::class);

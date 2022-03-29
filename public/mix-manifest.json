@@ -25,6 +25,7 @@
     "/demo1/js/custom/authentication/sign-up/general.js": "/demo1/js/custom/authentication/sign-up/general.js",
     "/demo1/js/custom/modals/two-factor-authentication.js": "/demo1/js/custom/modals/two-factor-authentication.js",
     "/demo1/js/custom/settings/profile/sign-in-methods.js": "/demo1/js/custom/settings/profile/sign-in-methods.js",
+    "/demo1/js/custom/settings/users/view.js": "/demo1/js/custom/settings/users/view.js",
     "/demo1/js/custom/user-management/permissions/add-permission.js": "/demo1/js/custom/user-management/permissions/add-permission.js",
     "/demo1/js/custom/user-management/permissions/list.js": "/demo1/js/custom/user-management/permissions/list.js",
     "/demo1/js/custom/user-management/permissions/update-permission.js": "/demo1/js/custom/user-management/permissions/update-permission.js",
