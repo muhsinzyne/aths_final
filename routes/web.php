@@ -14,6 +14,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Scrap\StudentExamAuditController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\SchoolController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -65,6 +66,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [DashBoardController::class, 'index'])->name('home');
 
     Route::resource('students', StudentsController::class)->names('students');
+
+    Route::resource('schools', SchoolController::class)->names('schools');
 
     // to remove after project set
     Route::prefix('account')->group(function () {

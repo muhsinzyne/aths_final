@@ -26,4 +26,9 @@ class AppViews
     const STUDENTS_INDEX = 'students.list.index';
 
     const STUDENTS_VIEW = 'students.view.view';
+
+    const SCHOOL_INDEX  = 'schools.index';
+    const SCHOOL_VIEW   = 'schools.view';
+    const SCHOOL_CREATE = 'schools.create';
+    const SCHOOL_EDIT   = 'schools.edit';
 }
