@@ -37,6 +37,27 @@ return [
         ],
 
         [
+            'title'      => 'Schools',
+            'icon'       => '<i class="bi bi-building fs-3"></i>',
+            'classes'    => ['item' => 'menu-accordion'],
+            'attributes' => [
+                'data-kt-menu-trigger' => 'click',
+            ],
+            'sub'        => [
+                'class' => 'menu-sub-accordion menu-active-bg',
+                'items' => [
+                    [
+                        'title'      => 'Schools List',
+                        'path'       => AppUrls::SCHOOLS_INDEX,
+                        'bullet'     => '<i class="bi bi-building"></i>',
+
+                    ],
+
+                ],
+            ],
+        ],
+
+        [
             'title'      => 'Configuration',
             'icon'       => [
                 'svg'  => theme()->getSvgIcon('demo1/media/icons/duotune/communication/com006.svg', 'svg-icon-2'),

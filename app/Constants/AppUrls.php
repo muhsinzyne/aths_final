@@ -19,4 +19,5 @@ class AppUrls
     const SETTINGS_PROFILE_INDEX = 'settings/profile';
 
     const STUDENTS_INDEX = 'students';
+    const SCHOOLS_INDEX  = 'schools';
 }
