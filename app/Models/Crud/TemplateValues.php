@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace App\Models\Crud;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

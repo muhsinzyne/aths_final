@@ -5,7 +5,7 @@ use App\Constants\AppConst;
 use App\Constants\AppViews;
 use App\DataTables\Crud\TemplateValuesDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\TemplateValues;
+use App\Models\Crud\TemplateValues;
 use Illuminate\Http\Request;
 
 class TemplateValuesController extends Controller

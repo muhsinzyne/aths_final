@@ -1,8 +1,7 @@
 <?php
 namespace App\DataTables\Crud;
 
-use App\Models\TemplateValue;
-use App\Models\TemplateValues;
+use App\Models\Crud\TemplateValues;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
