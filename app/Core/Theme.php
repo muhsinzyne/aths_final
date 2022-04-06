@@ -1499,4 +1499,13 @@ class Theme
     {
         echo sprintf('var hostUrl = "%s";', self::getAssetsUrlPath());
     }
+
+    public static function numberShort($number=0, $precision=2)
+    {
+        $suffixes = ['', 'K', 'M', 'B', 'T', 'Qa', 'Qi'];
+        $index    = (int) log(abs($number), 1000);
+        $index    = max(0, min(count($suffixes) - 1, $index)); // Clamps to a valid suffixes' index
+
+        return number_format($number / 1000 ** $index, $precision) . $suffixes[$index];
+    }
 }

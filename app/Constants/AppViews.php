@@ -23,6 +23,11 @@ class AppViews
 
     const PROFILE_EDIT = 'settings.profile.edit';
 
+    const TEMPLATE_VALUES_INDEX      = 'settings.crud.template-values.index';
+    const TEMPLATE_VALUES_CREATE     = 'settings.crud.template-values.create';
+    const TEMPLATE_VALUES_VIEW       = 'settings.crud.template-values.view';
+    const TEMPLATE_VALUES_EDIT       = 'settings.crud.template-values.edit';
+
     const STUDENTS_INDEX = 'students.list.index';
 
     const STUDENTS_VIEW = 'students.view.view';

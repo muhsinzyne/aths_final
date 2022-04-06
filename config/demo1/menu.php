@@ -70,6 +70,29 @@ return [
             'sub'        => [
                 'class' => 'menu-sub-accordion menu-active-bg',
                 'items' => [
+
+                    [
+                        'title'      => 'Application CRUD Dependancies',
+                        'path'       => AppUrls::TEMPLATE_VALUES_INDEX,
+                        'bullet'     => '<span class="bi bi-arrow-repeat fs-3"></span>',
+                        'classes'    => ['item' => 'menu-accordion'],
+                        'attributes' => [
+                            'data-kt-menu-trigger' => 'click',
+                        ],
+                        'sub'        => [
+                            'class' => 'menu-sub-accordion menu-active-bg',
+                            'items' => [
+                                [
+                                    'title'  => 'App Templates Values',
+                                    'path'   => AppUrls::TEMPLATE_VALUES_INDEX,
+                                    'bullet' => '<span class="bi bi-sliders"></span>',
+
+                                ],
+
+                            ],
+                        ],
+                    ],
+
                     [
                         'title'      => 'Users Management',
                         'path'       => AppUrls::USERS_INDEX,

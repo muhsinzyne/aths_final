@@ -1,7 +1,47 @@
+
+
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <div id="kt_content_container" class="container-xxl">
         <div class="row g-6 g-xl-9">
             <div class="col-lg-6 col-xxl-4">
+                <div class="card card-flush h-md-50 mb-xl-10">
+                    <div class="card-header pt-5">
+                        <div class="card-title d-flex flex-column">
+                            <span class="fs-2hx fw-bolder text-dark me-2 lh-1"> {{ theme()->numberShort($school->students->count(), 2)  }} </span>
+                            <span class="text-gray-400 pt-1 fw-bold fs-6"> {{__('Total Students') }} </span>
+                        </div>
+                    </div>
+                    <div class="card-body d-flex flex-column justify-content-end pe-0">
+                        <i class="bi bi-display"></i>
+
+                        <div class="symbol-group symbol-hover flex-nowrap">
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Alan Warden">
+                                <span class="symbol-label bg-warning text-inverse-warning fw-bolder">A</span>
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Michael Eberon">
+                                <img alt="Pic" src="assets/media/avatars/300-11.jpg" />
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Susan Redwood">
+                                <span class="symbol-label bg-primary text-inverse-primary fw-bolder">S</span>
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Melody Macy">
+                                <img alt="Pic" src="assets/media/avatars/300-2.jpg" />
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Perry Matthew">
+                                <span class="symbol-label bg-danger text-inverse-danger fw-bolder">P</span>
+                            </div>
+                            <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Barry Walter">
+                                <img alt="Pic" src="assets/media/avatars/300-12.jpg" />
+                            </div>
+                            <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal" data-bs-target="#kt_modal_view_users">
+                                <span class="symbol-label bg-light text-gray-400 fs-8 fw-bolder">+42</span>
+                            </a>
+                        </div>
+                        <!--end::Users group-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+
                 <div class="card h-100">
                     <div class="card-body p-9">
                         <div class="fs-2hx fw-bolder">237</div>
@@ -31,6 +71,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div class="col-lg-6 col-xxl-4">
                 <div class="card h-100">
                     <div class="card-body p-9">

@@ -4,14 +4,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class School extends Model
+class TemplateValues extends Model
 {
     protected $primaryKey  = 'id';
-    protected $table       = 'schools';
+    protected $table       = 'aths_template_values';
+    protected $fillable    = ['code', 'value', 'created_by', 'updated_by'];
     use HasFactory;
-
-    public function students()
-    {
-        return $this->hasMany(Students::class, 'School_ID', 'SchoolId');
-    }
 }

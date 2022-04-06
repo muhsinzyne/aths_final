@@ -20,4 +20,10 @@ class AppUrls
 
     const STUDENTS_INDEX = 'students';
     const SCHOOLS_INDEX  = 'schools';
+
+    const TEMPLATE_VALUES_INDEX     = 'settings/crud/template-values';
+    const TEMPLATE_VALUES_VIEW      = 'settings/crud/template-values/{id}';
+    const TEMPLATE_VALUES_CREATE    = 'settings/crud/template-values/create';
+    const TEMPLATE_VALUES_EDIT      = 'settings/crud/template-values/{id}/edit';
+    const TEMPLATE_VALUES_DELETE    = 'settings/crud/template-values/{id}/delete';
 }

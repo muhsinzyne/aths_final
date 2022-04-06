@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Account\SettingsController;
 use App\Http\Controllers\Auth\SocialiteLoginController;
+use App\Http\Controllers\Crud\TemplateValuesController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\DemoController;
 use App\Http\Controllers\Documentation\ReferencesController;
@@ -93,6 +94,7 @@ Route::middleware('auth')->group(function () {
         Route::get('profile/edit', [ProfileController::class, 'edit'])->name('settings.profile.edit');
         Route::put('profile/change_password', [ProfileController::class, 'changePassword'])->name('settings.profile.change_password');
         Route::put('profile/change_email', [ProfileController::class, 'changeEmail'])->name('settings.profile.change_email');
+        Route::resource('crud/template-values', TemplateValuesController::class)->names('settings.crud.template-values');
     });
 
     Route::get('demo', [DemoController::class, 'index'])->name('demo.index');
