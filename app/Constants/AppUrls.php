@@ -26,4 +26,10 @@ class AppUrls
     const TEMPLATE_VALUES_CREATE    = 'settings/crud/template-values/create';
     const TEMPLATE_VALUES_EDIT      = 'settings/crud/template-values/{id}/edit';
     const TEMPLATE_VALUES_DELETE    = 'settings/crud/template-values/{id}/delete';
+
+    const PUSH_NOTIFIAION_TEMPLATES_INDEX     = 'settings/crud/push-notification';
+    const PUSH_NOTIFIAION_TEMPLATES_CREATE    = 'settings/crud/push-notification/create';
+    const PUSH_NOTIFIAION_TEMPLATES_VIEW      = 'settings/crud/push-notification/{id}';
+    const PUSH_NOTIFIAION_TEMPLATES_EDIT      = 'settings/crud/push-notification/{id}/edit';
+    const PUSH_NOTIFIAION_TEMPLATES_DELETE    = 'settings/crud/push-notification/{id}/delete';
 }

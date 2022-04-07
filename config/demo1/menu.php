@@ -86,6 +86,12 @@ return [
                                     'title'  => 'App Templates Values',
                                     'path'   => AppUrls::TEMPLATE_VALUES_INDEX,
                                     'bullet' => '<span class="bi bi-sliders"></span>',
+                                ],
+
+                                [
+                                    'title'  => 'Push Notifciation Templates',
+                                    'path'   => AppUrls::PUSH_NOTIFIAION_TEMPLATES_INDEX,
+                                    'bullet' => '<span class="bi bi-sliders"></span>',
 
                                 ],
 

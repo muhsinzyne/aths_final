@@ -823,6 +823,8 @@ class Theme
         $string = str_replace('_', ' ', $string);
         $string = ucwords($string);
 
+        $string = preg_replace('/[A-Z]/', ' $0', $string);
+
         return $string;
     }
 

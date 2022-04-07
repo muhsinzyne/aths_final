@@ -1,30 +1,27 @@
 <?php
 namespace App\DataTables\Crud;
 
-use App\Models\Crud\TemplateValues;
+use App\Models\Crud\PushNotificationTemplates;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class TemplateValuesDataTable extends DataTable
+class PushNotificationTemplateDataTable extends DataTable
 {
     public function dataTable($query)
     {
         return datatables()
         ->eloquent($query)
         ->addIndexColumn()
-        ->editColumn('code', function ($model) {
-            return '[:' . $model->code . ']';
-        })
         ->addColumn('actions', function ($model) {
             return view('settings.crud.template-values._actions', compact('model'));
         })
         ->rawColumns(['actions']);
     }
 
-    public function query(TemplateValues $model)
+    public function query(PushNotificationTemplates $model)
     {
         return $model->newQuery();
     }
@@ -58,7 +55,9 @@ class TemplateValuesDataTable extends DataTable
                 ->searchable(false),
 
             Column::make('code')->title('Code'),
-            Column::make('value')->title('Value'),
+            Column::make('template')->title('Template'),
+            Column::make('description')->title('Description'),
+            Column::make('template_id')->title('Template ID'),
             Column::make('actions')->title('Actions')
                 ->orderable(false)
                 ->searchable(false)
@@ -69,6 +68,6 @@ class TemplateValuesDataTable extends DataTable
 
     protected function filename()
     {
-        return 'TemplateValues_' . date('YmdHis');
+        return 'PushNotification_Template_' . date('YmdHis');
     }
 }

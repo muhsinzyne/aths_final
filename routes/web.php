@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Account\SettingsController;
 use App\Http\Controllers\Auth\SocialiteLoginController;
+use App\Http\Controllers\Crud\PushNotificationTemplateController;
 use App\Http\Controllers\Crud\TemplateValuesController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\DemoController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Scrap\StudentExamAuditController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SchoolController;
+use App\Models\Crud\PushNotificationTemplates;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -95,6 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::put('profile/change_password', [ProfileController::class, 'changePassword'])->name('settings.profile.change_password');
         Route::put('profile/change_email', [ProfileController::class, 'changeEmail'])->name('settings.profile.change_email');
         Route::resource('crud/template-values', TemplateValuesController::class)->names('settings.crud.template-values');
+        Route::resource('crud/push-notification', PushNotificationTemplateController::class)->names('settings.crud.push-notification');
     });
 
     Route::get('demo', [DemoController::class, 'index'])->name('demo.index');
