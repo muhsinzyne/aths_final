@@ -8,6 +8,7 @@
     ],
     "license": "MIT",
     "require": {
+        "adldap2/adldap2-laravel": "^6.1",
         "anlutro/l4-settings": "^1.0",
         "dompdf/dompdf": "^0.6.1",
         "fideloper/proxy": "^4.4",
