@@ -7,3 +7,17 @@ type LoginPayload {
 	auth_token: String
 	refresh_token: String
 }
+
+type GuardianAccessPayload {
+    error: Boolean
+    message: String
+    guardian: Guardian
+    auth_token: String
+    refresh_token: String
+}
+
+type GuardianOtpRequestPayload {
+    error: Boolean
+    message: String
+
+}

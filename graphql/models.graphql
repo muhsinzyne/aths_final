@@ -3,3 +3,16 @@ type User {
 	name: String
 	email: String
 }
+
+type Guardian {
+    id: ID
+    name_en: String
+    name_ar: String
+    national_id: String
+    mobile: String
+    email_id: String
+    geneder: String
+    avatar: String
+    created_at: DateTime
+    updated_at: DateTime
+}

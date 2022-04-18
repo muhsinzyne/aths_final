@@ -3,4 +3,12 @@ extend type Mutation {
 	login(email: String!, password: String!, client_type: String!, unique_id: String!): LoginPayload
     @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@login")
 
+
+
+    guardianOtpRequest(email: String!): GuardianOtpRequestPayload
+    @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@guardianOtpRequest")
+
+    verifyGuardianOtp(email: String!, otp: String!): GuardianAccessPayload
+    @field(resolver: "App\\GraphQL\\Mutations\\AuthMutator@guardianOtpValidation")
+
 }
